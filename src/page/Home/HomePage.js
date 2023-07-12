@@ -3,18 +3,21 @@ import Slideshow from "../../Component/Home/Slideshow";
 import Brands from "../../Component/Brand/Brands"
 import CardProductsContainer from "../../Component/Products/CardPrandsContainer"
 import Ads from "../../Component/Home/Ads";
-import Category from '../../Component/Category/CategoryContainer';
-import NewProducts from '../../Component/Products/NewProducts';
+import CategoryContainer from '../../Component/Category/CategoryContainer';
+// import NewProducts from '../../Component/Products/NewProducts';
+import ViewHomeProductsHook from '../../hook/products/view-home-products-hook';
 
 function HomePage() {
+    const [items] = ViewHomeProductsHook();
     return (
         <div>
             <Slideshow />
-            <Category />
+            <CategoryContainer />
+            <CardProductsContainer titleOfBar={"New products"} prodcuts={items}/>
             <Brands />
-            <CardProductsContainer />
             <Ads />
-            <NewProducts />
+            <CardProductsContainer titleOfBar={"wish list"} prodcuts={items}/>
+            {/* <NewProducts /> */}
         </div>
     )
 }

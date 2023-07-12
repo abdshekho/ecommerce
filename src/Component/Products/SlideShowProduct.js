@@ -1,32 +1,19 @@
 import React from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import one from "../../images/mobile1.png"
-import two from "../../images/mobile.png"
-import three from "../../images/mobile2.png"
 
-function SlideShowProduct() {
+import Spinner from '../utility/Spinner';
+
+function SlideShowProduct({images}) {
+
 
     return (
         <div className=''>
 
             <Carousel showIndicators={ false } thumbWidth={ 40 } verticalSwipe='natural' selectedItem={ 0 } autoFocus={ true } >
-                <div>
-                    <img src={ one } alt='' />
-                </div>
-                <div>
-                    <img src={ two } alt='' />
-                </div>
-                <div>
-                    <img src={ three } alt='' />
-                </div>
-                <div>
-                    <img src={ one } alt='' />
-                </div>
-                <div>
-                    <img src={ two } alt='' />
-                </div>
-
+                {images?images.map((item,index)=>{
+                    return <div key={index}> <img  src={item}/> </div>
+                }):<div className='m-10'><Spinner /></div>}
             </Carousel>
         </div>
     );

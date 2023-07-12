@@ -7,9 +7,22 @@
     html {
         font-family: 'Almarai', sans-serif;
     }
+
+
 }
 
 html {
     background-color: #afb4bd4f;
+
+}
+
+@layer components {
+    .side-profile-link {
+        @apply border-b-[1px] px-2 py-4 hover:bg-[#f4f4f891] text-sm md:text-lg   text-blue-gray-700
+    }
+    .side-profile-link-active {
+        @apply border-b-[1px] px-2 py-4 bg-[#424242] text-[#2196f3] text-sm md:text-lg hover:bg-[#424242] 
+    }
+
 
 }

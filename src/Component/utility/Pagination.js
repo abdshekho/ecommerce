@@ -1,7 +1,22 @@
 import ReactPaginate from 'react-paginate';
 import "./style.css"
-function Pagination() {
-const handlePageClick = ()=> {}
+import { useEffect } from 'react';
+function Pagination( { pageCount, onPress } ) {
+
+    const handlePageClick = ( data ) => {
+        onPress( data.selected + 1 )
+
+    }
+
+    //to scroll top on Change pagination
+    useEffect( () => {
+        const body = document.querySelector( '#root' );
+        body.scrollIntoView( {
+            behavior: 'smooth'
+        }, 500 )
+
+    }, [ onPress ] );
+
 
     return (
         <div className="flex  gap-3 flex-wrap p-6 py-12 font-serif  justify-center items-center my-10">
@@ -9,9 +24,9 @@ const handlePageClick = ()=> {}
                 breakLabel="..."
                 nextLabel="next"
                 onPageChange={ handlePageClick }
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={2}
-                pageCount={100}
+                marginPagesDisplayed={ 2 }
+                pageRangeDisplayed={ 2 }
+                pageCount={ pageCount }
                 previousLabel="previous"
                 containerClassName="flex p-3"
                 pageClassName="page-item px-2"
@@ -24,7 +39,7 @@ const handlePageClick = ()=> {}
                 breakLinkClassName="page-link p-2"
                 // activeClassName="activePageinate"
                 activeLinkClassName='activePageinate'
-                // renderOnZeroPageCount={ null }
+            // renderOnZeroPageCount={ null }
             />
         </div>
     );

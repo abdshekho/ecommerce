@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { Navbar, MobileNav, Typography, IconButton, } from "@material-tailwind/react";
+import { Navbar, MobileNav, Typography, IconButton, Spinner, } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import SidebarSearchHook from "../../hook/products/sidebar-search-hook";
+import { getAllCategory, getAllCategoryPage, getAllCategoryToNav } from "../../redux/actions/categoryAction";
 
 function NavOfProduct() {
     const [ openNav, setOpenNav ] = useState( false );
-
     useEffect( () => {
         window.addEventListener(
             "resize",
@@ -15,28 +17,48 @@ function NavOfProduct() {
         as: "li",
         variant: "small",
         color: "blue-gray",
-        className: "p-1 font-normal"
+        className: "p-1 font-normal flex items-center  hover:text-[#2196f3]"
     }
 
+
+    const dispatch = useDispatch();
+
+    useEffect( () => {
+        const one = async () => {
+
+            await dispatch( getAllCategoryToNav( 9 ) )
+        }
+        one()
+    }, [ dispatch ] )
+
+
+    const categoryNav = useSelector( state => state.allCategory.categoryToNav )
+    const loading = useSelector( state => state.allCategory.loading )
+
+
+
     const navList = (
-        <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 ">
-            <Typography { ...propsOfLink }><a href="/" className="flex items-center  hover:text-blue-gray-600">All</a></Typography>
-            <Typography { ...propsOfLink }><a href="/" className="flex items-center  hover:text-blue-gray-600">elece</a></Typography>
-            <Typography { ...propsOfLink }><a href="/" className="flex items-center  hover:text-blue-gray-600">Clothes</a></Typography>
-            <Typography { ...propsOfLink }><a href="/" className="flex items-center  hover:text-blue-gray-600">Electronic</a></Typography>
-            <Typography { ...propsOfLink }><a href="/" className="flex items-center  hover:text-blue-gray-600">Sale</a></Typography>
-            <Typography { ...propsOfLink }><a href="/" className="flex items-center  hover:text-blue-gray-600">Electronic</a></Typography>
-            <Typography { ...propsOfLink }><a href="/" className="flex items-center  hover:text-blue-gray-600">Electronic</a></Typography>
-            <Typography { ...propsOfLink }><a href="/" className="flex items-center  hover:text-blue-gray-600">Electronic</a></Typography>
-            <Typography { ...propsOfLink }><a href="/" className="flex items-center  hover:text-blue-gray-600">Electronic</a></Typography>
+        <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-4 ">
+            { loading === false ?
+                categoryNav && categoryNav.data ? categoryNav.data.map( item => {
+                    return (
+                        <Link to={ `/products/category/${item.name}/${item._id}` } key={ item._id }>
+                            <Typography { ...propsOfLink } >{ item.name }</Typography>
+                        </Link>
+                    )
+
+
+                } ) : <h3>no item yet</h3>
+                : <div><Spinner /></div>
+            }
             <Link to="/AllCategory">
-                <Typography { ...propsOfLink }><span href="/" className="flex items-center  hover:text-blue-gray-600">More</span></Typography>
+                <Typography { ...propsOfLink }><span href="/" className="flex items-center  hover:text-[#2196f3]">More</span></Typography>
             </Link>
         </ul>
     );
     return (
         <Navbar className="mx-auto max-w-screen-xl py-2 px-4 lg:px-8 lg:py-4">
-            <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
+            <div className="container mx-auto flex items-center justify-center text-blue-gray-900">
                 <div className="hidden lg:block">{ navList }</div>
                 <IconButton variant="text" className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden" ripple={ false }
                     onClick={ () => setOpenNav( !openNav ) }>

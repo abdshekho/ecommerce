@@ -1,14 +1,8 @@
 import React, { useState } from 'react'
 import { FaSortAmountDown, FaSortAmountUpAlt } from 'react-icons/fa';
-import {
-    Menu,
-    MenuHandler,
-    MenuList,
-    MenuItem,
-    Button,
-} from "@material-tailwind/react";
+import { Menu, MenuHandler, MenuList, MenuItem, Button, } from "@material-tailwind/react";
 import "./style.css"
-function DropDown() {
+function DropDownFilter() {
     const [ open, setOpen ] = useState( false );
 
     // Change props and see effect
@@ -31,10 +25,10 @@ function DropDown() {
         //     </div>
         // </UnopDropdown>
         <div >
-            <Menu open={open} handler={setOpen} >
+            <Menu open={ open } handler={ setOpen } >
                 <MenuHandler >
                     <Button color='white' className='flex bg-white text-gray-800' >
-                        Open Menu  {open?<FaSortAmountUpAlt className='ml-1' />:<FaSortAmountDown className='ml-1' />}
+                        Open Menu  { open ? <FaSortAmountUpAlt className='ml-1' /> : <FaSortAmountDown className='ml-1' /> }
                     </Button>
                 </MenuHandler>
                 <MenuList>
@@ -48,4 +42,4 @@ function DropDown() {
     );
 }
 
-export default DropDown
+export default DropDownFilter

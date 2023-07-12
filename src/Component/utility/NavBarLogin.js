@@ -1,36 +1,165 @@
 
 import logo from "../../images/logo.png"
 import cart from "../../images/cart.png"
-import login from "../../images/login.png"
+import { Navbar, Typography, IconButton, Button, Input, ListItem, List, Avatar, Menu, MenuHandler, MenuList, MenuItem, Badge } from "@material-tailwind/react";
+import { FaAddressCard, FaBezierCurve, FaBriefcase, FaCogs, FaHeart, FaListOl, FaMoneyCheckAlt, FaPowerOff, FaRegHeart, FaRegObjectUngroup, FaSearch, FaShoppingCart, FaTh, FaUserAlt } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import NavSearchHook from "../../hook/products/navbar-search-hook";
+import GetAllUserCart from "../../hook/cart/get-all-user-cart-hook";
+import { useSelector } from "react-redux";
+
 const NavBarLogin = () => {
+
+    // let word = "";
+    // if(localStorage.getItem("searchWord"))
+    const [ searchWord, onChangeSearch ] = NavSearchHook()
+    const [ open, setOpen ] = useState( false );
+
+    let user = "";
+    if ( localStorage.getItem( "user" ) )
+        user = JSON.parse( localStorage.getItem( "user" ) )
+
+    useEffect( () => {
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function () {
+            var currentScrollPos = window.pageYOffset;
+            if ( prevScrollpos > currentScrollPos ) {
+                document.getElementById( "navbar" ).style.top = "0";
+            } else if ( prevScrollpos < currentScrollPos && currentScrollPos > 300 ) {
+                document.getElementById( "navbar" ).style.top = "-128px";
+            }
+            prevScrollpos = currentScrollPos;
+        }
+    }, [] )
+    const SignOUt = () => {
+        localStorage.removeItem( 'user' )
+        localStorage.removeItem( 'token' )
+        setTimeout( () => {
+            window.location.href = "/"
+        }, 500 );
+    }
+
+    const [ itemNum ] = GetAllUserCart();
+    const resGetCart = useSelector( state => state.cartReducer.getAllUserCart )
+
 
 
     return (
-        <div className="fixed  z-50 w-full top-0">
+        <div className="fixed  z-50 w-full top-0 transition-all" id="navbar">
+            <Navbar className="mx-auto max-w-full px-4 py-3 rounded-md bg-transparent border-none">
+                <div className="container flex flex-wrap items-center justify-between gap-y-4 text-blue-gray-900 ">
+                    <Link to={ "/" }><Avatar src={ logo } alt="avatar" size="md" variant="rounded" className="bg-gray-800" /></Link>
+                    <div className="ml-auto flex gap-1 md:mr-4">
+                        <Link to={ "/Cart" } alt="" className="flex items-center">
+                            <Badge content={ resGetCart && resGetCart.numOfCartItems ? resGetCart.numOfCartItems : 0 } color="green" >
+                                <IconButton variant="text" className=" text-blue-gray-800">
+                                    <FaShoppingCart className="h-4 w-4" />
+                                </IconButton>
+                            </Badge>
 
-            <nav className="bg-black ">
-                <div className="container flex h-[60px] items-center lg:w-4/5 md:w-4/5  sm:w-full xs:w-full">
-                    <div className="w-1/5 flex justify-center sm:justify-end">
-                        <a href="/Cart" alt="">
-                        <img src={ cart } className="h-[24px] w-[24px] sm:h-[30px] sm:w-[30px] mr-[6px]" alt=""></img>
-                        </a>
-                        <a href="/login">
-                            <img src={ login } className="h-[24px] w-[24px]  sm:h-[30px] sm:w-[30px] mr-[6px] " alt=""></img>
-                        </a>
+                        </Link>
+                        { user.name ?
+                            <Menu open={ open } handler={ setOpen }>
+                                <MenuHandler >
+                                    <Button variant="text" className="flex items-center gap-3 bg-transparent text-blue-gray-800" >
+                                        { open ? <FaUserAlt className='ml-1' /> : <FaUserAlt className='ml-1' /> } { user.name ? user.name : "login" }
+                                    </Button>
+                                </MenuHandler>
+                                { user.role === "user" ?
+                                    <MenuList>
+                                        <Link to={ '/user/user-profile' }>
+                                            <MenuItem className="flex items-center gap-2">
+                                                <FaUserAlt /> profile
+                                            </MenuItem>
+                                        </Link>
+                                        <Link to={ '/user/allorders' }>
+                                            <MenuItem className="flex items-center gap-2">
+                                                <FaBriefcase /> orders
+                                            </MenuItem>
+                                        </Link>
+                                        <Link to={ '/user/favorite' }>
+                                            <MenuItem className="flex items-center gap-2">
+                                                <FaHeart /> Favorites
+                                            </MenuItem>
+                                        </Link>
+                                        <Link to={ '/user/address' } >
+                                            <MenuItem className="flex items-center gap-2">
+                                                <FaAddressCard /> Addresses
+                                            </MenuItem>
+                                        </Link>
+                                        <MenuItem className="flex items-center gap-2 border-t  text-red-400 hover:text-red-400 hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10" onClick={ SignOUt }>
+                                            <FaPowerOff />Logout
+                                        </MenuItem>
+                                    </MenuList>
+                                    :
+                                    <MenuList>
+
+                                        <Link to={ '/admin/allorders' }>
+                                            <MenuItem className="flex items-center gap-2">
+                                                <FaListOl /> manage of orders
+                                            </MenuItem>
+                                        </Link>
+                                        <Link to={ '/admin/allproducts' }>
+                                            <MenuItem className="flex items-center gap-2">
+                                                <FaCogs /> Mange of products
+                                            </MenuItem>
+                                        </Link>
+                                        <Link to={ '/admin/addbrand' } >
+                                            <MenuItem className="flex items-center gap-2">
+                                                <FaAddressCard /> Add new Brand
+                                            </MenuItem>
+                                        </Link>
+                                        <Link to={ '/admin/addCategory' } >
+                                            <MenuItem className="flex items-center gap-2">
+                                                <FaRegObjectUngroup /> Add new category
+                                            </MenuItem>
+                                        </Link>
+                                        <Link to={ '/admin/addSubCategory' } >
+                                            <MenuItem className="flex items-center gap-2">
+                                                <FaBezierCurve /> Add new sub category
+                                            </MenuItem>
+                                        </Link>
+                                        <Link to={ '/admin/addproduct' } >
+                                            <MenuItem className="flex items-center gap-2">
+                                                <FaTh /> Add new product
+                                            </MenuItem>
+                                        </Link>
+                                        <Link to={ '/admin/addcoupon' } >
+                                            <MenuItem className="flex items-center gap-2">
+                                                <FaMoneyCheckAlt /> Add coupon
+                                            </MenuItem>
+                                        </Link>
+                                        <Link to={ '/admin/favorite' } >
+                                            <MenuItem className="flex items-center gap-2">
+                                                <FaRegHeart /> Favorite
+                                            </MenuItem>
+                                        </Link>
+                                        <MenuItem className="flex items-center gap-2 border-t text-red-400 hover:text-red-700 hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10" onClick={ SignOUt }>
+                                            <FaPowerOff />Logout
+                                        </MenuItem>     
+                                    </MenuList>
+
+                                }
+
+                            </Menu>
+                            :
+                            <Link to={ '/login' } className="">
+                                <Button variant="text" className="flex items-center gap-3 bg-transparent text-blue-gray-800" >
+                                    <FaUserAlt /> login
+                                </Button>
+                            </Link>
+                        }
+
+
                     </div>
-                    <div className="w-3/5">
-
-                        <input type="text" className="w-full h-[35px] md:h-[40px] p-2 placeholder:text-center" placeholder="Search .." />
-                    </div>
-                    <div className="w-1/8 flex justify-start">
-                        <a href="/">
-
-                        <img src={ logo } className="w-[45px] h-[30px]  sm:w-[60px] sm:h-[45px] ml-[10px]" alt=".."></img>
-                        </a>
+                    <div className="relative flex w-full gap-2 md:w-[300px] ">
+                        <Input label="Search" icon={ <FaSearch /> } className="" onChange={ onChangeSearch } value={ searchWord } />
                     </div>
                 </div>
-            </nav>
-        </div>
+            </Navbar >
+
+        </div >
     )
 };
 

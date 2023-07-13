@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
+import { FaGlobeAmericas, FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
 import ColorOfProduct from './ColorOfProduct';
 import { Button, Chip } from '@material-tailwind/react';
 import { FaShoppingCart } from "react-icons/fa";
@@ -54,7 +54,7 @@ function DetailsProduct( { id, title, category, description, price, brand, color
                 <span>sold total: { sold && price ? sold * price : 0 }$</span>
                 <span>available quantity: { quantity }</span>
             </div>
-            <div className='flex justify-end text-sm md:text-md text-blue-gray-600  my-4'>{ createdAt ? createdAt.slice( 0, 10 ) : 0 }</div>
+            <div className='flex justify-end text-sm md:text-md text-blue-gray-600  my-4 items-center gap-1'><FaGlobeAmericas /> { createdAt ? createdAt.slice( 0, 10 ) : 0 }</div>
             <div className='flex'>
                 <Button className='flex items-center' onClick={ handelAddToCart }>Add to Cart <FaShoppingCart className='ml-1' />  </Button>
                 <Chip value={ price + " $" } className='ml-2 flex items-center bg-gray-100 text-lg text-blue-gray-700' />

@@ -1,6 +1,6 @@
 import { Input, Tooltip } from '@material-tailwind/react';
 import React from 'react'
-import { FaPencilAlt, FaStar, FaTrashAlt } from "react-icons/fa";
+import { FaGlobeAmericas, FaPencilAlt, FaRegClock, FaStar, FaTrashAlt } from "react-icons/fa";
 import { Button, Dialog, DialogHeader, DialogBody, DialogFooter, } from "@material-tailwind/react";
 import DeleteRateHook from '../../hook/review/delete-rate-hook';
 import { ToastContainer } from 'react-toastify';
@@ -81,7 +81,14 @@ function Comment( { review } ) {
                 </Dialog>
             </div>
             <span className='text-gray-800 text-sm md:text-md'>{ review ? review.review : "" }</span>
-            <div className='flex justify-end text-sm md:text-md text-blue-gray-600  my-2'>{ review ? review.createdAt.slice(0,10) : 0 }</div>
+            <div className='flex  justify-end gap-3 text-sm md:text-md text-blue-gray-600  my-2'>
+                <div className='flex items-center gap-1'>
+                    <FaGlobeAmericas /> <span>{ review ? review.createdAt.slice( 0, 10 ) : 0 }</span>
+                </div>
+                <div className='flex items-center gap-1'>
+                    <FaRegClock /> <span>{ review ? review.createdAt.slice( 11, 16 ) : 0 }</span>
+                </div>
+            </div>
             <ToastContainer />
         </div>
     )

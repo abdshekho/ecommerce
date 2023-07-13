@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaTrashAlt } from "react-icons/fa"
+import { FaGlobeAmericas, FaRegClock, FaTrashAlt } from "react-icons/fa"
 import one from "../../images/mobile1.png"
 import ColorOfProduct from '../Products/ColorOfProduct'
 import { Link } from 'react-router-dom'
@@ -14,7 +14,8 @@ function AdminOrderItem( { id, idOrder, createdAt, isDelivered, userName, userEm
                     <span className='text-sm md:text-md   mb-1'>order Number : <span className='text-blue-gray-600 font-bold'>#{ idOrder }</span></span>
                     <span className='text-sm md:text-md   mb-1'>user name: <span className='text-blue-gray-600 font-bold'>{ userName }</span></span>
                     <span className='text-sm md:text-md   mb-1'>Email:  <span className='text-blue-gray-600 font-bold'>{ userEmail }</span></span>
-                    <span className='text-sm md:text-md   mb-1'><span className='text-blue-gray-600'>{ createdAt.slice( 0, 10 ) }</span></span>
+                    <span className='text-sm md:text-md   mb-1'><span className='text-blue-gray-600 flex items-center gap-1'><FaGlobeAmericas /> { createdAt.slice( 0, 10 ) }</span></span>
+                    <span className='text-sm md:text-md   mb-1'><span className='text-blue-gray-600 flex items-center gap-1'><FaRegClock /> { createdAt.slice( 11, 16 ) }</span></span>
                     {/* <span className='flex text-sm md:text-lg  font-sans text-blue-gray-800 mb-4'><h1 className='text-md md:text-xl   mr-1'>user name: </h1> { userName }</span>
                     <span className='flex'><h1 className='text-md md:text-xl   mr-1'>Email: </h1> <span className=' text-blue-gray-600'>{ userEmail }</span></span>
 

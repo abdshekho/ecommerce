@@ -5,7 +5,6 @@ import { getAllOrders } from '../../redux/actions/orderAction';
 import Pagination from '../utility/Pagination';
 
 function AdminAllOrders( { title } ) {
-    const Descriptoin = "iphon XR memory Storage 128GB and support LTE 4g with Applicatoin"
     const dispatch = useDispatch();
     const [ loading, setLoading ] = useState( false );
     const limit = 5
@@ -37,12 +36,6 @@ function AdminAllOrders( { title } ) {
 
                     : <div></div>
                 }
-
-                {/* < AdminOrderItem idOrder={ "#13214" } Brand={ "Apple" } Descriptoin={ Descriptoin } price={ 400 } />
-                <AdminOrderItem idOrder={ "#13214" } Brand={ "Apple" } Descriptoin={ Descriptoin } price={ 400 } />
-                <AdminOrderItem idOrder={ "#13214" } Brand={ "Apple" } Descriptoin={ Descriptoin } price={ 400 } />
-                <AdminOrderItem idOrder={ "#13214" } Brand={ "Apple" } Descriptoin={ Descriptoin } price={ 400 } />
-                <AdminOrderItem idOrder={ "#13214" } Brand={ "Apple" } Descriptoin={ Descriptoin } price={ 400 } /> */}
             </div>
             { resGetAllOrder && resGetAllOrder.paginationResult && resGetAllOrder.results > limit ?
                 <Pagination pageCount={ resGetAllOrder.paginationResult.numberOfPages } onPress={ onPagination } />

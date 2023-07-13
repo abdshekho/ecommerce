@@ -6,7 +6,6 @@ import CardProductsContainer from '../../Component/Products/CardPrandsContainer'
 import { useParams } from 'react-router-dom'
 import ViewProductDetailsHook from '../../hook/products/view-product-details-hook'
 import CardContainerHook from '../../hook/products/Card-container-hook'
-import { useEffect, useState } from 'react'
 // import mobile from "../../images/mobile1.png";
 
 
@@ -27,7 +26,6 @@ function ProductDetailsPage() {
             prodcutsLike = produtLike.data.slice( 0, 4 )
         }
     }
-    console.log( item )
     return (
         <div className=''>
             <NavOfProduct />

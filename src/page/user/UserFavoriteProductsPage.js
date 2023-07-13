@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import UserSideBar from '../../Component/user/UserSideBar'
-import Pagination from '../../Component/utility/Pagination'
-import UserFavoriteProduct from '../../Component/user/UserFavoriteProduct';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductWishList } from '../../redux/actions/wishListAction';
-import CardProductsContainer from '../../Component/Products/CardPrandsContainer';
 import { Button, Spinner } from '@material-tailwind/react';
 import { Typography } from '@material-tailwind/react';
 import CardProductsConainerFavorite from '../../Component/Products/CardProductsConainerFavorite';
-import AdminSdieBar from '../../Component/Admin/AdminSdieBar';
 import { Link } from 'react-router-dom';
 function UserFavoriteProductsPage() {
     const dispatch = useDispatch();

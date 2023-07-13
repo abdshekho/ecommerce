@@ -27,6 +27,7 @@ function RateContainer( { rateQty, rateAvg } ) {
         activeColor: "#ffc107",
         value: rateValue
     }
+    
     return (
         <div className='mt-10 pb-10'>
             <div className='flex items-center'>
@@ -39,7 +40,7 @@ function RateContainer( { rateQty, rateAvg } ) {
             </div>
             <RatePost onsubmite={ onsubmite } rateText={ rateText } onChangeRateText={ onChangeRateText } />
             <div className="border-b-[1px] border-gray-400">
-                { allReview && allReview.data && allReview.data.length != 0 ? allReview.data.map( ( review, index ) => {
+                { allReview && allReview.data && allReview.data.length !== 0 ? allReview.data.map( ( review, index ) => {
                     return <Comment key={ index } review={ review } />
                 } ) : <div className=" p-4 text-center text-blue-gray-700 font-sans">No Rating yet</div> }
             </div>

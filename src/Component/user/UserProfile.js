@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Button, Dialog, DialogBody, DialogFooter, DialogHeader, Input, Tooltip } from '@material-tailwind/react';
 import { ToastContainer } from 'react-toastify';
-import { useDispatch, useSelector } from 'react-redux';
 import { FaPencilAlt } from "react-icons/fa";
 import { updateUserProfileData } from '../../redux/actions/authAction';
 import { notifyError } from '../../hook/useNotification';

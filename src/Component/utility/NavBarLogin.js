@@ -51,9 +51,9 @@ const NavBarLogin = () => {
                 <div className="container flex flex-wrap items-center justify-between gap-y-4 text-blue-gray-900 ">
                     <Link to={ "/" }><Avatar src={ logo } alt="avatar" size="md" variant="rounded" className="bg-gray-800" /></Link>
                     <div className="ml-auto flex gap-1 md:mr-4">
-                        <Link to={ "/Cart" } alt="" className="flex items-center">
-                            <Badge content={ resGetCart && resGetCart.numOfCartItems ? resGetCart.numOfCartItems : 0 } color="green" >
-                                <IconButton variant="text" className=" text-blue-gray-800">
+                        <Link to={ "/Cart" } alt="" className="flex items-center  ">
+                            <Badge className="lowercase"  content={ resGetCart && resGetCart.numOfCartItems ? resGetCart.numOfCartItems : 0 } color="green" >
+                                <IconButton variant="text" className=" text-blue-gray-800 lowercase">
                                     <FaShoppingCart className="h-4 w-4" />
                                 </IconButton>
                             </Badge>
@@ -137,7 +137,7 @@ const NavBarLogin = () => {
                                         </Link>
                                         <MenuItem className="flex items-center gap-2 border-t text-red-400 hover:text-red-700 hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10" onClick={ SignOUt }>
                                             <FaPowerOff />Logout
-                                        </MenuItem>     
+                                        </MenuItem>
                                     </MenuList>
 
                                 }

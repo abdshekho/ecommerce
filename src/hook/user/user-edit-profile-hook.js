@@ -46,7 +46,7 @@ function UserEditeProfileHook() {
   }
   useEffect( () => {
     if ( !loadingEdite ) {
-      if ( resEditeProfile && resEditeProfile.status === 200 && resEditeProfile.statusText === "OK" && resEditeProfile.data && resEditeProfile.data.data && resEditeProfile.data.data.user ) {
+      if ( resEditeProfile && resEditeProfile.status === 200 && resEditeProfile.data && resEditeProfile.data.data && resEditeProfile.data.data.user ) {
         localStorage.setItem( "user", JSON.stringify( resEditeProfile.data.data.user ) )
         window.location.reload()
 
@@ -54,7 +54,7 @@ function UserEditeProfileHook() {
     }
   }, [ loadingEdite ] )
 
-  return [ user, nameNew, EmailNew, phoneNew, setnameNew, setEmailNew, setphoneNew, loadingEdite, openEdit,setLoadingEdite, handleOpenEdite, handelEdit ]
+  return [ user, nameNew, EmailNew, phoneNew, setnameNew, setEmailNew, setphoneNew, loadingEdite, openEdit, setLoadingEdite, handleOpenEdite, handelEdit ]
 }
 
 export default UserEditeProfileHook

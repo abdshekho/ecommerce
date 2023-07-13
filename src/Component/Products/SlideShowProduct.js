@@ -9,7 +9,6 @@ function SlideShowProduct({images}) {
 
     return (
         <div className=''>
-
             <Carousel showIndicators={ false } thumbWidth={ 40 } verticalSwipe='natural' selectedItem={ 0 } autoFocus={ true } >
                 {images?images.map((item,index)=>{
                     return <div key={index}> <img  src={item}/> </div>

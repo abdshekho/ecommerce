@@ -30,7 +30,7 @@ function UserAllOrders( { title } ) {
 
     return (
         <div className='container'>
-            <h1 className='text-md md:text-xl  font-bold mb-1 pl-4 text-blue-gray-700'>{ resGetAllOrder.results ? title + " : " + resGetAllOrder.results : title + " : loading ..." }</h1>
+            <h1 className='text-md md:text-xl  font-bold mb-1 pl-4 text-blue-gray-700'>{ resGetAllOrder.results ? title + " : " + resGetAllOrder.results : title + " : 0" }</h1>
             <div>
                 { resGetAllOrder && resGetAllOrder.data ? resGetAllOrder.data.map( ( item, index ) => {
                     return (

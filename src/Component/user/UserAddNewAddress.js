@@ -32,7 +32,7 @@ function UserAddNewAddress( { title, titleButton } ) {
     }
     useEffect( () => {
         if ( !loading && press ) {
-            if ( resPost && resPost.status && resPost.status === 200 && resPost.statusText === "OK" ) {
+            if ( resPost && resPost.status && resPost.status === 200  ) {
                 notifySuccess( "Add new Address successfully" )
                 setAlias( "" )
                 setDetails( "" )
@@ -65,7 +65,7 @@ function UserAddNewAddress( { title, titleButton } ) {
                 </div>
                 <Button onClick={ handelSubmite }>{ titleButton }</Button>
             </div>
-            { loading ? <div className='m-20'><Spinner className='w-[50px] h-[50px]'/></div> : <div></div> }
+            { loading ? <div className='m-20'><Spinner className='w-[50px] h-[50px]' /></div> : <div></div> }
             <ToastContainer />
         </div>
     )

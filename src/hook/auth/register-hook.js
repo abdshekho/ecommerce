@@ -42,7 +42,7 @@ const RegisterHook = () => {
             notifyError( "You have entered an invalid email address!" )
             return;
         }
-        if ( phone.length <= 10 ) {
+        if ( phone.length <= 9 ) {
             notifyError( "You have entered an invalid Phone!" )
             return;
         }

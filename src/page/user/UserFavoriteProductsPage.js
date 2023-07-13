@@ -5,10 +5,11 @@ import UserFavoriteProduct from '../../Component/user/UserFavoriteProduct';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductWishList } from '../../redux/actions/wishListAction';
 import CardProductsContainer from '../../Component/Products/CardPrandsContainer';
-import { Spinner } from '@material-tailwind/react';
+import { Button, Spinner } from '@material-tailwind/react';
 import { Typography } from '@material-tailwind/react';
 import CardProductsConainerFavorite from '../../Component/Products/CardProductsConainerFavorite';
 import AdminSdieBar from '../../Component/Admin/AdminSdieBar';
+import { Link } from 'react-router-dom';
 function UserFavoriteProductsPage() {
     const dispatch = useDispatch();
     const [ loading, setLoading ] = useState( false );
@@ -45,10 +46,14 @@ function UserFavoriteProductsPage() {
                     { !loading ?
                         items && items.length !== 0 ?
                             <CardProductsConainerFavorite titleOfBar={ "All favorite products" } prodcuts={ items } />
-                            : <Typography className="text-center" variant="h5" color="gray">you don't have  favorite products yet</Typography> :
-                        <div className='m-20'><Spinner className='w-[50px] h-[50px]' /></div>
+                            : <Typography className="text-center" variant="h5" color="gray">you don't have  favorite products yet</Typography>
+                        : <div className='m-20'><Spinner className='w-[50px] h-[50px]' /></div>
                     }
-
+                    <div className='flex justify-center my-10 items-center'>
+                        <Link to={ "/AllProudct" }>
+                            <Button>Products browse</Button>
+                        </Link>
+                    </div>
                 </div>
             </div>
             {/* <Pagination /> */ }

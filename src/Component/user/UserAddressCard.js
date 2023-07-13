@@ -1,7 +1,6 @@
 import { Button, Dialog, DialogBody, DialogFooter, DialogHeader, Input, Tooltip } from '@material-tailwind/react';
 import React, { useEffect, useState } from 'react'
 import { FaTrashAlt, FaPencilAlt } from "react-icons/fa";
-import { Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { notifyError } from '../../hook/useNotification';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,7 +20,6 @@ function UserAddressCard( { id, alias, details, city, phone, postalCode } ) {
     const [ cityNew, setCityNew ] = useState( "" )
     const [ postalCodeNew, setPostalCodeNew ] = useState( "" )
     const [ phoneNew, setPhoneNew ] = useState( "" )
-    const [ press, setPress ] = useState( false )
 
 
     const resDelete = useSelector( state => state.couponReducer.deleteCoupon )

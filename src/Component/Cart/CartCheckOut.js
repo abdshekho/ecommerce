@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Input, Button, Chip, Spinner } from "@material-tailwind/react";
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { FaDollarSign } from 'react-icons/fa';
-import { applayCoupnCart } from '../../redux/actions/cartAction';
-import { notifyError, notifySuccess } from '../../hook/useNotification';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { notifyError } from '../../hook/useNotification';
 import ApplyCopon from './applyCopon';
 function CartCheckOut( { cartItem } ) {
     // const [ applyCopno, couponName, setCouponName, loaingCopon, setLodingCopon, priceAfterDiscount, totalCartPrice, onChange ] = ApplyCopon();

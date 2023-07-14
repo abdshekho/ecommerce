@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { FaStar, FaTrashAlt } from "react-icons/fa"
-import one from "../../images/mobile1.png"
 import ColorOfProduct from '../Products/ColorOfProduct'
-import { useDispatch } from 'react-redux'
-import { deleteCartItem, getAllUserCartItems, updateCartItem } from '../../redux/actions/cartAction'
+
 import { Button, Input, Spinner } from '@material-tailwind/react'
-import GetAllUserCart from '../../hook/cart/get-all-user-cart-hook'
 import ApplyCopon from './applyCopon'
-import baseUrl from '../../Api/baseURL'
 import { URL } from '../../Api/baseUrlWithoutAxios'
 import { Link } from 'react-router-dom'
 
 
-function CartItem( { idCartItem, Category, title, imageCover, Brand, price, color, count, ratingsAverage ,idProduct} ) {
+function CartItem( { idCartItem, Category, title, imageCover, Brand, price, color, count, ratingsAverage, idProduct } ) {
 
-    const [ applyCopno, couponName, setCouponName, totalCartPrice, priceAfterDiscount, loaingCopon, onChange, setLodingCopon, newCount, handelCount, handleDelete, loadingDelete, setNewCount, loadingCount ] = ApplyCopon( idCartItem, count );
+    const [ , , , , , , , , newCount, handelCount, handleDelete, loadingDelete, setNewCount, loadingCount ] = ApplyCopon( idCartItem, count );
     const imagePath = `${URL}products/${imageCover}` || "Product Delted"
     return (
         <div className='container bg-white flex flex-col sm:grid  grid-cols-12 py-2 my-4 rounded-lg shadow-lg'>

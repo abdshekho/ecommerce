@@ -1,7 +1,6 @@
 
 import logo from "../../images/logo.png"
-import cart from "../../images/cart.png"
-import { Navbar, Typography, IconButton, Button, Input, ListItem, List, Avatar, Menu, MenuHandler, MenuList, MenuItem, Badge } from "@material-tailwind/react";
+import { Navbar, IconButton, Button, Input, Avatar, Menu, MenuHandler, MenuList, MenuItem, Badge, badge } from "@material-tailwind/react";
 import { FaAddressCard, FaBezierCurve, FaBriefcase, FaCogs, FaHeart, FaListOl, FaMoneyCheckAlt, FaPowerOff, FaRegHeart, FaRegObjectUngroup, FaSearch, FaShoppingCart, FaTh, FaUserAlt } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -52,7 +51,7 @@ const NavBarLogin = () => {
                     <Link to={ "/" }><Avatar src={ logo } alt="avatar" size="md" variant="rounded" className="bg-gray-800" /></Link>
                     <div className="ml-auto flex gap-1 md:mr-4">
                         <Link to={ "/Cart" } alt="" className="flex items-center  ">
-                            <Badge className="lowercase"  content={ resGetCart && resGetCart.numOfCartItems ? resGetCart.numOfCartItems : 0 } color="green" >
+                            <Badge className="lowercase" content={ resGetCart && resGetCart.numOfCartItems ? resGetCart.numOfCartItems : 0 } color="green" >
                                 <IconButton variant="text" className=" text-blue-gray-800 lowercase">
                                     <FaShoppingCart className="h-4 w-4" />
                                 </IconButton>

@@ -1,7 +1,6 @@
 import React from 'react'
-import { FaGlobeAmericas, FaRegClock, FaTrashAlt } from "react-icons/fa"
-import one from "../../images/mobile1.png"
-import ColorOfProduct from '../Products/ColorOfProduct'
+import { FaGlobeAmericas, FaRegClock } from "react-icons/fa"
+
 import { Link } from 'react-router-dom'
 function AdminOrderItem( { id, idOrder, createdAt, isDelivered, userName, userEmail, isPaid, paymentMethodType, price } ) {
     return (

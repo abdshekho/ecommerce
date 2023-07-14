@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import UserSideBar from '../../Component/user/UserSideBar'
-import Pagination from '../../Component/utility/Pagination'
-import UserFavoriteProduct from '../../Component/user/UserFavoriteProduct';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductWishList } from '../../redux/actions/wishListAction';
-import CardProductsContainer from '../../Component/Products/CardPrandsContainer';
 import { Spinner } from '@material-tailwind/react';
 import { Typography } from '@material-tailwind/react';
 import CardProductsConainerFavorite from '../../Component/Products/CardProductsConainerFavorite';

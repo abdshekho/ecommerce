@@ -9,7 +9,6 @@ import { getProductWishList } from '../../redux/actions/wishListAction';
 import CardContainerHook from '../../hook/products/Card-container-hook';
 import { URL } from '../../Api/baseUrlWithoutAxios';
 function CardProductsConainerFavorite( { titleOfBar, prodcuts } ) {
-    console.log( prodcuts )
     const [ favProduct ] = CardContainerHook()
 
     return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Input, Textarea, Select, Option } from '@material-tailwind/react'
+import { Button, Input, Textarea, Select, Option, Spinner } from '@material-tailwind/react'
 //https://react-select.com/home nedded to proxy
 import Select2 from 'react-select';
 import makeAnimated from 'react-select/animated';
@@ -17,7 +17,7 @@ import AdminEditProductsHook from './../../hook/products/edit-products-hook'
 
 function AdminEditProducts() {
     const { id } = useParams();
-    const [ CatID, BrandID, onChangeDesName, onChangeQty, onChangeColor, onChangePriceAfter, onChangePriceBefor, onChangeProdName, showColor, category, brand, priceAftr, images, setImages, onSelect, onRemove, options, handelChangeComplete, removeColor, onSeletCategory, handelSubmit, onSeletBrand, colors, priceBefore, qty, prodDescription, prodName ] =
+    const [ CatID, BrandID, onChangeDesName, onChangeQty, onChangeColor, onChangePriceAfter, onChangePriceBefor, onChangeProdName, showColor, category, brand, priceAftr, images, setImages, onSelect, onRemove, options, handelChangeComplete, removeColor, onSeletCategory, handelSubmit, onSeletBrand, colors, priceBefore, qty, prodDescription, prodName, loading ] =
         AdminEditProductsHook( id );
     const animatedComponents = makeAnimated();
     let categorySelect = CatID !== "" && CatID.length !== 0 ? <Select label="Main category" onChange={ ( e ) => onSeletCategory( e ) } value={ CatID }>
@@ -108,6 +108,11 @@ function AdminEditProducts() {
                         { showColor ? <CompactPicker onChangeComplete={ handelChangeComplete } /> : null }
 
                     </div>
+                    { !loading ? <div className='m-10'>
+                        <Spinner className='w-[40px] h-[40px]' />
+                    </div>
+                        : <div></div>
+                    }
                     <Button className='mt-6' onClick={ handelSubmit }>Add and Save</Button>
                 </div>
 

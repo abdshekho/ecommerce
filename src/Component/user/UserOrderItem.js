@@ -1,6 +1,5 @@
 import React from 'react'
 // import { FaTrashAlt } from "react-icons/fa"
-import one from "../../images/mobile1.png"
 import { Chip } from '@material-tailwind/react'
 import { Link } from 'react-router-dom'
 import { URL } from '../../Api/baseUrlWithoutAxios'

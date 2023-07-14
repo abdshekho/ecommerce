@@ -1,6 +1,6 @@
-import  { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 // import { getOneCategoyr } from '../../redux/actions/categoryAction';
-import {  getOneProduct } from '../../redux/actions/productsAtion';
+import { getOneProduct } from '../../redux/actions/productsAtion';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllCategory } from '../../redux/actions/categoryAction';
@@ -8,6 +8,7 @@ import { getAllBrand } from '../../redux/actions/brandAction';
 import { updateProduct } from '../../redux/actions/productsAtion';
 import { notifyError, notifySuccess } from '../useNotification';
 import { getSubDependCategory } from '../../redux/actions/subCategoryAction';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -60,6 +61,7 @@ function AdminEditProductsHook( id ) {
     const [ loading, setLoading ] = useState( true );
 
 
+
     useEffect( () => {
         if ( item && item.data ) {
 
@@ -74,6 +76,7 @@ function AdminEditProductsHook( id ) {
         }
     }, [ item ] )
 
+    const navigate = useNavigate()
     //to change name state
     const onChangeProdName = ( event ) => {
         event.persist();
@@ -136,7 +139,7 @@ function AdminEditProductsHook( id ) {
     }, [ CatID ] )
 
     useEffect( () => {
-        if ( subCat && subCat !== 0 && subCat.length !== 0 && subCat.data) {
+        if ( subCat && subCat !== 0 && subCat.length !== 0 && subCat.data ) {
             console.log( subCat.data )
 
             setOptions( subCat.data.map( ( item ) => { return { value: item._id, label: item.name } } ) )
@@ -182,7 +185,7 @@ function AdminEditProductsHook( id ) {
 
             e.preventDefault();
             if ( CatID === "" || prodName === "" || prodDescription === "" || images.length <= 0 || priceBefore <= 0 ) {
-                notifyError( "من فضلك اكمل البيانات" )
+                notifyError( "pleas complate info" )
                 return;
             }
 
@@ -261,10 +264,14 @@ function AdminEditProductsHook( id ) {
                 console.log( "its here222222" )
                 if ( product.status === 200 ) {
                     notifySuccess( "Edit complete" )
+                    navigate( "/admin/allproducts" )
+
+
                 } else {
                     notifyError( "Error .. ..." )
                     return
                 }
+
                 // setColors( [] )
                 // setImages( [] )
                 // setProdName( '' )
@@ -283,7 +290,7 @@ function AdminEditProductsHook( id ) {
 
     return [ CatID, BrandID, onChangeDesName, onChangeQty, onChangeColor, onChangePriceAfter, onChangePriceBefor, onChangeProdName,
         showColor, category, brand, priceAftr, images, setImages, onSelect, onRemove, options, handelChangeComplete, removeColor,
-        onSeletCategory, handelSubmit, onSeletBrand, colors, priceBefore, qty, prodDescription, prodName ]
+        onSeletCategory, handelSubmit, onSeletBrand, colors, priceBefore, qty, prodDescription, prodName, loading ]
 }
 
 export default AdminEditProductsHook 

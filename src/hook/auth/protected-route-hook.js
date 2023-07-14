@@ -19,6 +19,8 @@ const ProtectedRouteHook = () => {
             setIsAdmin( false )
             setIsUser( false )
         }
+        console.clear()
+
     }, [] )
 
 

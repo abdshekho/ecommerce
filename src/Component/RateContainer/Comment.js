@@ -81,7 +81,7 @@ function Comment( { review } ) {
                 </Dialog>
             </div>
             <span className='text-gray-800 text-sm md:text-md'>{ review ? review.review : "" }</span>
-            <div className='flex  justify-end gap-3 text-sm md:text-md text-blue-gray-600  my-2'>
+            <div className='flex  justify-end gap-3 text-xs md:text-md text-blue-gray-600  my-2'>
                 <div className='flex items-center gap-1'>
                     <FaGlobeAmericas /> <span>{ review ? review.createdAt.slice( 0, 10 ) : 0 }</span>
                 </div>

@@ -33,6 +33,11 @@ function AddRateHook( id ) {
             notifyError( "you Registered as an admin account don't have permission to Rate that" )
             return
         }
+
+        if ( user === "" ) {
+            notifyWarning( 'check your accoutn' )
+            return
+        }
         if ( rateValue === 0 || Number( rateValue ) === 0.5 ) {
             notifyWarning( 'Enter Rating' )
             return

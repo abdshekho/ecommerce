@@ -42,7 +42,7 @@ function ProductCard( { image, titleOfProdcut, description, price, id, rateAvg, 
                     <div>
                         <span className='font-[800] text-sm md:text-lg text-[#474751]'>{ price } </span>$
                     </div>
-                    <div className='flex text-yellow-700 pr-1 text-sm md:text-lg items-center'>{ rateAvg ? rateAvg : 4.8 } <FaStar className='ml-1 ' /></div>
+                    <div className='flex text-yellow-700 pr-1 text-sm md:text-md items-center'>{ rateAvg ? rateAvg : 4.8 } <FaStar className='ml-1 ' /></div>
                     <Tooltip content="Add to cart" className="bg-[#474751]">
                         <div className='hover:text-[#2196f3] cursor-pointer text-[#474751]' onClick={ handelAddToCart }><FaShoppingCart className='w-[25px] h-[25px]' /></div>
                     </Tooltip>

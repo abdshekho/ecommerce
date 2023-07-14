@@ -231,8 +231,8 @@ function AdminAddProduct() {
                     </div>
                     <div className='flex my-6'>
                         <Select label="Brand" onChange={ ( e ) => setSelectBrand( e ) } >
-                            { loadingBrand === false ?
-                                Brand.data ? (
+                            { !loadingBrand ?
+                                Brand && Brand.data ? (
                                     Brand.data.map( ( item ) => {
                                         return <Option key={ item._id } value={ item._id }>{ item.name } </Option>
                                     } )

@@ -37,10 +37,12 @@ function AdminAllOrders( { title } ) {
                     : <div></div>
                 }
             </div>
-            { resGetAllOrder && resGetAllOrder.paginationResult && resGetAllOrder.results > limit ?
-                <Pagination pageCount={ resGetAllOrder.paginationResult.numberOfPages } onPress={ onPagination } />
-                : <div></div>
-            }
+            <div>
+                { resGetAllOrder && resGetAllOrder.paginationResult && resGetAllOrder.results > limit ?
+                    <Pagination pageCount={ resGetAllOrder.paginationResult.numberOfPages } onPress={ onPagination } />
+                    : <div></div>
+                }
+            </div>
         </div>
     )
 }

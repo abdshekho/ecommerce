@@ -26,6 +26,7 @@ function ProductDetailsPage() {
             prodcutsLike = produtLike.data.slice( 0, 4 )
         }
     }
+    console.log( item )
     return (
         <div className=''>
             <NavOfProduct />
@@ -34,7 +35,7 @@ function ProductDetailsPage() {
                     <SlideShowProduct images={ images } />
                 </div>
                 <div className='col-span-8 mb-10 md:mb-0'>
-                    <DetailsProduct id={ item._id } title={ item.title } categoryId={ item.category } brandId={ item.brand } createdAt={ item.createdAt } sold={ item.sold } quantity={ item.quantity } category={ category } description={ item.description } price={ item.price } brand={ brand } colors={ item.availableColors } rateAvg={ rateAvg } favProduct={ favProduct } />
+                    <DetailsProduct id={ item._id } title={ item.title } categoryId={ item.category } brandId={ item.brand } createdAt={ item.createdAt } sold={ item.sold } quantity={ item.quantity } category={ category } description={ item.description } price={ item.price } brand={ brand } colors={ item.availableColors } rateQty={ rateQty } rateAvg={ rateAvg } favProduct={ favProduct } />
                 </div>
             </div>
             <div className='container bg-gray-100 p-6 rounded-3xl mt-10'>

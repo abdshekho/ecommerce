@@ -22,7 +22,7 @@ function ProductContainerPage() {
     if ( pagination && pagination.length !== 0 )
         numberOfPages = pagination.numberOfPages
 
-    console.clear()
+    // console.clear()
     return (
         <div>
             <NavOfProduct />

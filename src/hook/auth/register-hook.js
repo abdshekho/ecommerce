@@ -14,7 +14,8 @@ const RegisterHook = () => {
     const [ phone, setPhone ] = useState( '' )
     const [ password, setPassword ] = useState( '' )
     const [ confirmPassword, setConfirmPassword ] = useState( '' )
-    const [ loading, setLoading ] = useState( true )
+    const [ loading, setLoading ] = useState( false )
+    const [ press, setPress ] = useState( false )
 
     const onChangeName = ( e ) => {
         setName( e.target.value )
@@ -33,9 +34,16 @@ const RegisterHook = () => {
         setConfirmPassword( e.target.value )
     }
 
-    const validationValues = () => {
+
+
+    const res = useSelector( state => state.authReducer.createUser )
+
+    //save data
+    const OnSubmit = async () => {
+        setPress( !press )
+        // validationValues();
         if ( name === "" ) {
-            notifyError( "من فضلك ادخل اسم المستخدم" )
+            notifyError( "please enter username" )
             return;
         }
         if ( !( /\S+@\S+\.\S+/.test( email ) ) ) {
@@ -50,14 +58,6 @@ const RegisterHook = () => {
             notifyError( "password didn't match" )
             return;
         }
-
-    }
-
-    const res = useSelector( state => state.authReducer.createUser )
-
-    //save data
-    const OnSubmit = async () => {
-        validationValues();
         setLoading( true )
         await dispatch( createNewUser( {
             name,
@@ -70,8 +70,8 @@ const RegisterHook = () => {
     }
 
     useEffect( () => {
-        if ( loading === false ) {
-            if ( res ) {
+        if ( !loading ) {
+            if ( res && res.data ) {
                 if ( res.data.token ) {
                     localStorage.setItem( "token", res.data.token )
                     console.log( res )
@@ -87,7 +87,7 @@ const RegisterHook = () => {
                 }
                 if ( res.data.errors ) {
                     if ( res.data.errors[ 0 ].msg === "accept only syrian phone numbers" )
-                        notifyError( "should be The nubmer phone has 11 number" )
+                        notifyError( "should be The nubmer phone has 10 number and syrina number valid" )
                 }
 
                 if ( res.data.errors ) {
@@ -101,7 +101,7 @@ const RegisterHook = () => {
     }, [ loading ] )
 
     return [ name, email, phone, password, confirmPassword, loading, onChangeName, onChangeEmail,
-        onChangePhone, onChangePassword, onChangeConfirmPassword, OnSubmit ]
+        onChangePhone, onChangePassword, onChangeConfirmPassword, OnSubmit, press ]
 }
 
 export default RegisterHook

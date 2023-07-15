@@ -1,12 +1,12 @@
 import React from 'react';
-import { Card, Input, Checkbox, Button, Typography } from "@material-tailwind/react";
+import { Card, Input, Checkbox, Button, Typography, Spinner } from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
 import RegisterHook from '../../hook/auth/register-hook';
 import { ToastContainer } from 'react-toastify';
 
 function RegisterPage() {
     const [ name, email, phone, password, confirmPassword, loading, onChangeName, onChangeEmail,
-        onChangePhone, onChangePassword, onChangeConfirmPassword, OnSubmit ] = RegisterHook()
+        onChangePhone, onChangePassword, onChangeConfirmPassword, OnSubmit, press ] = RegisterHook()
     return (
         <div className='md:container flex justify-center pt-10'>
 
@@ -17,7 +17,7 @@ function RegisterPage() {
                 <Typography color="gray" className="mt-1 font-normal">
                     Enter your details to register.
                 </Typography>
-                <form className="mt-8 mb-2  max-w-screen-lg ">
+                <div className="mt-8 mb-2  max-w-screen-lg ">
                     <div className="mb-4 flex flex-col gap-6">
                         <Input size="lg" label="UserName" value={ name } onChange={ onChangeName } />
                         <Input size="lg" label="Email" value={ email } onChange={ onChangeEmail } />
@@ -45,7 +45,8 @@ function RegisterPage() {
                         }
                         containerProps={ { className: "-ml-2.5" } }
                     />
-                    <Button className="mt-6" fullWidth onClick={OnSubmit} type='submit'>
+                    { loading ? <div><Spinner className='w-[40px] h-[40px] m-10' /></div> : <div></div> }
+                    <Button className="mt-6" fullWidth onClick={ OnSubmit } type='submit'>
                         Register
                     </Button>
                     <Typography color="gray" className="mt-4 text-center font-normal">
@@ -57,14 +58,8 @@ function RegisterPage() {
                             Sign In
                         </Link>
                     </Typography>
-                    <Typography color="gray" className="mt-4 text-center font-normal">
-                        <Link to="/admin/allproducts"
-                            className="font-medium text-blue-500 transition-colors hover:text-blue-700"
-                        >
-                            login as a Admin{ " " }
-                        </Link>
-                    </Typography>
-                </form>
+
+                </div>
             </Card>
             <ToastContainer />
         </div>

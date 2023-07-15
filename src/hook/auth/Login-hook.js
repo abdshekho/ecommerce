@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { createNewUser } from '../../redux/actions/authAction';
 
 import { notifyError, notifySuccess } from '../useNotification';
-import {  loginUser } from '../../redux/actions/authAction';
+import { loginUser } from '../../redux/actions/authAction';
 function LoginHook() {
     const dispatch = useDispatch();
 
@@ -36,7 +36,7 @@ function LoginHook() {
         validationValues();
         setLoading( true )
         await dispatch( loginUser( {
-            email,
+            email: email.replace( " ", "" ),
             password
         } ) )
         setLoading( false )
@@ -47,9 +47,9 @@ function LoginHook() {
     useEffect( () => {
         if ( loading === false && res && res.data ) {
             if ( res.data.token && res.status === 200 ) {
-    
+
                 localStorage.setItem( "token", res.data.token )
-                localStorage.setItem( "user", JSON.stringify(res.data.data) )
+                localStorage.setItem( "user", JSON.stringify( res.data.data ) )
                 notifySuccess( "Register Complete" )
                 setTimeout( () => {
                     window.location.href = "/"

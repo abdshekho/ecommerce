@@ -31,7 +31,7 @@ function ProductDetailsPage() {
         <div className=''>
             <NavOfProduct />
             <div className='container  block md:grid-cols-12 md:grid  mt-10'>
-                <div className='col-span-4 md:w-[90%] bg-[#3a4451] rounded-xl'>
+                <div className='col-span-4 md:w-[90%] bg-white p-2 rounded-xl'>
                     <SlideShowProduct images={ images } />
                 </div>
                 <div className='col-span-8 mb-10 md:mb-0'>

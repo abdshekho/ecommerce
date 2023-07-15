@@ -5,15 +5,17 @@ import App from "./App";
 // import { ThemeProvider } from "@material-tailwind/react";
 import store from "./redux/store"
 import { Provider } from "react-redux";
+import { Analytics } from "@vercel/analytics/react";
 // import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot( document.getElementById( "root" ) );
 root.render(
-  <Provider store={store} >
-  {/* <ThemeProvider > */}
-  
+  <Provider store={ store } >
+    {/* <ThemeProvider > */ }
+
     <App />
-  {/* </ThemeProvider> */}
+    {/* </ThemeProvider> */ }
+    <Analytics />
   </Provider>
 );
 

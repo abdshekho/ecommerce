@@ -7,13 +7,19 @@ function GetAllUserCart() {
     const [ loadingGet, setLoadignGet ] = useState( false )
     const [ itemNum, setItemsNum ] = useState( 0 )
     const [ cartItem, setCartItem ] = useState( 0 )
+
+    let user = "";
+    if ( localStorage.getItem( "user" ) )
+        user = JSON.parse( localStorage.getItem( "user" ) )
+
     useEffect( () => {
         const get = async () => {
             setLoadignGet( true )
             await dispatch( getAllUserCartItems() )
             setLoadignGet( false )
         }
-        get();
+        if ( user )
+            get();
     }, [] )
 
 

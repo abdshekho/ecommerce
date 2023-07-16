@@ -7,11 +7,15 @@ function CardContainerHook() {
     const [ loading, setLoading ] = useState( true )
     const [ favProduct, setFavProduct ] = useState( [] )
     const res = useSelector( state => state.addToWishListReducer.allWishList )
+    let user = "";
+    if ( localStorage.getItem( "user" ) )
+        user = JSON.parse( localStorage.getItem( "user" ) )
 
     useEffect( () => {
         const get = async () => {
             setLoading( true )
-            await dispatch( getProductWishList() )
+            if ( user )
+                await dispatch( getProductWishList() )
             setLoading( false )
         }
 

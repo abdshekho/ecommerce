@@ -34,7 +34,7 @@ function UserAllOrders( { title } ) {
             <div>
                 { resGetAllOrder && resGetAllOrder.data ? resGetAllOrder.data.map( ( item, index ) => {
                     return (
-                        <div className=' bg-white rounded-2xl container my-4 py-4'>
+                        <div className=' bg-white rounded-2xl container my-4 py-4' key={ index }>
                             <span className='flex text-md md:text-lg  font-bold  pl-4 my-2'>order Number <span className='text-blue-gray-600 pl-2'>#{ item.id }</span></span>
                             <UserOrder cartItems={ item.cartItems } />
 

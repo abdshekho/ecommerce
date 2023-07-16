@@ -11,7 +11,7 @@ function AdminOrderItem( { id, idOrder, createdAt, isDelivered, userName, userEm
 
                 <div className=' flex flex-wrap justify-between gap-2 py-4'>
                     <span className='text-sm md:text-md   mb-1'>order Number : <span className='text-blue-gray-600 font-bold'>#{ idOrder }</span></span>
-                    <span className='text-sm md:text-md   mb-1'>user name: <span className='text-blue-gray-600 font-bold'>{ userName }</span></span>
+                    <span className='text-sm md:text-md   mb-1'>user name: <span className='text-blue-gray-600 font-bold'>{ userName && userName.name ? userName.name : "" }</span></span>
                     <span className='text-sm md:text-md   mb-1'>Email:  <span className='text-blue-gray-600 font-bold'>{ userEmail }</span></span>
                     <span className='text-sm md:text-md   mb-1'><span className='text-blue-gray-600 flex items-center gap-1'><FaGlobeAmericas /> { createdAt.slice( 0, 10 ) }</span></span>
                     <span className='text-sm md:text-md   mb-1'><span className='text-blue-gray-600 flex items-center gap-1'><FaRegClock /> { createdAt.slice( 11, 16 ) }</span></span>

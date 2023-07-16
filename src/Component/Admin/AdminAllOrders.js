@@ -30,8 +30,8 @@ function AdminAllOrders( { title } ) {
         <div>
             <h1 className='text-md md:text-xl  font-bold mb-1 pl-4 text-blue-gray-700'>{ resGetAllOrder.results ? title + " : " + resGetAllOrder.results : title + " : loading..." }</h1>
             <div className='container flex flex-col-reverse lg:grid '>
-                { resGetAllOrder && resGetAllOrder.data ? resGetAllOrder.data.map( ( item, index ) => {
-                    return < AdminOrderItem key={ index } idOrder={ item.id } id={ item._id } createdAt={ item.createdAt } isDelivered={ item.isDelivered } userName={ item.user.name } userEmail={ item.user.email } isPaid={ item.isPaid } price={ item.totalOrderPrice } paymentMethodType={ item.paymentMethodType } />
+                { resGetAllOrder && resGetAllOrder.data &&resGetAllOrder? resGetAllOrder.data.map( ( item, index ) => {
+                    return < AdminOrderItem key={ index } idOrder={ item.id } id={ item._id } createdAt={ item.createdAt } isDelivered={ item.isDelivered } userName={ item.user } userEmail={ item.user.email } isPaid={ item.isPaid } price={ item.totalOrderPrice } paymentMethodType={ item.paymentMethodType } />
                 } )
 
                     : <div></div>

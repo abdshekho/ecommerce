@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navbar, MobileNav, Typography, IconButton, Spinner, } from "@material-tailwind/react";
+import { Navbar, MobileNav, Typography, IconButton, Spinner, Collapse, } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SidebarSearchHook from "../../hook/products/sidebar-search-hook";
@@ -71,11 +71,11 @@ function NavOfProduct() {
                         </svg> ) }
                 </IconButton>
             </div>
-            <MobileNav open={ openNav }>
+            <Collapse  open={ openNav }>
                 <div className="container mx-auto">
                     { navList }
                 </div>
-            </MobileNav>
+            </Collapse >
         </Navbar>
     )
 }

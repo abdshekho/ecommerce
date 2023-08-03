@@ -137,7 +137,6 @@ function AdminAddProduct() {
 
 
         colors.map( ( color ) => formData.append( "availableColors", color ) )
-        // subCatID.map( ( item ) => console.log( item.value ) )
         subCatID.map( ( item ) => formData.append( "subcategory", item.value ) )
 
         setIsPress( true )

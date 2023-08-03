@@ -39,7 +39,7 @@ function RateContainer( { rateQty, rateAvg } ) {
                 <div className="ml-2"><ReactStars { ...propsOfStartRating } /></div>
             </div>
             <RatePost onsubmite={ onsubmite } rateText={ rateText } onChangeRateText={ onChangeRateText } />
-            <div className="border-b-[1px] border-gray-400">
+            <div className=" border-gray-400">
                 { allReview && allReview.data && allReview.data.length !== 0 ? allReview.data.map( ( review, index ) => {
                     return <Comment key={ index } review={ review } />
                 } ) : <div className=" p-4 text-center text-blue-gray-700 font-sans">No Rating yet</div> }

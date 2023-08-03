@@ -1,6 +1,6 @@
 
 import logo from "../../images/logo.png"
-import { Navbar, IconButton, Button, Input, Avatar, Menu, MenuHandler, MenuList, MenuItem, Badge, badge } from "@material-tailwind/react";
+import { Navbar, IconButton, Button, Input, Avatar, Menu, MenuHandler, MenuList, MenuItem, Badge, Tooltip } from "@material-tailwind/react";
 import { FaAddressCard, FaBezierCurve, FaBriefcase, FaCogs, FaHeart, FaListOl, FaMoneyCheckAlt, FaPowerOff, FaRegHeart, FaRegObjectUngroup, FaSearch, FaShoppingCart, FaTh, FaUserAlt } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -12,9 +12,13 @@ const NavBarLogin = () => {
 
     // let word = "";
     // if(localStorage.getItem("searchWord"))
-    const [ searchWord, onChangeSearch ] = NavSearchHook()
+    const [ searchValue, setSearchValue ] = useState( localStorage.getItem( "searchWord" ) != null ? localStorage.getItem( "searchWord" ) : "" )
+    const [ searchWord, onChangeSearch ] = NavSearchHook( searchValue )
     const [ open, setOpen ] = useState( false );
 
+    useEffect( () => {
+        localStorage.setItem( "searchWord",searchValue ) 
+    }, [searchValue] )
     let user = "";
     if ( localStorage.getItem( "user" ) )
         user = JSON.parse( localStorage.getItem( "user" ) )
@@ -31,6 +35,10 @@ const NavBarLogin = () => {
             prevScrollpos = currentScrollPos;
         }
     }, [] )
+    const goToSearch = () => {
+        onChangeSearch( searchValue )
+        console.log( searchValue )
+    }
     const SignOUt = () => {
         localStorage.removeItem( 'user' )
         localStorage.removeItem( 'token' )
@@ -51,7 +59,7 @@ const NavBarLogin = () => {
                     <Link to={ "/" }><Avatar src={ logo } alt="avatar" size="md" variant="rounded" className="bg-gray-800" /></Link>
                     <div className="ml-auto flex gap-1 md:mr-4">
                         <Link to={ "/Cart" } alt="" className="flex items-center  ">
-                            <Badge className="lowercase" content={ resGetCart && resGetCart.numOfCartItems ? resGetCart.numOfCartItems : 0 } color="green" >
+                            <Badge className="lowercase" content={ resGetCart && resGetCart.numOfCartItems ? resGetCart.numOfCartItems : 0 } color="green"  >
                                 <IconButton variant="text" className=" text-blue-gray-800 lowercase">
                                     <FaShoppingCart className="h-4 w-4" />
                                 </IconButton>
@@ -153,7 +161,21 @@ const NavBarLogin = () => {
 
                     </div>
                     <div className="relative flex w-full gap-2 md:w-[300px] ">
-                        <Input label="Search" icon={ <FaSearch /> } className="" onChange={ onChangeSearch } value={ searchWord } />
+                        {/* <Input label="Search"
+                            className="" onChange={ onChangeSearch } value={ searchWord }
+                            icon={<FaSearch className="hover:text-blue-600" />}/> */}
+                        <div className="relative flex w-full max-w-[24rem]">
+                            <Input
+                                label="search.."
+                                className="pr-20"
+                                containerProps={ { className: "min-w-0" } }
+                                value={ searchValue }
+                                onChange={ ( e ) => setSearchValue( e.target.value ) }
+                            />
+                            <Tooltip content="Search" className="bg-[#474751]">
+                                <Button onClick={ goToSearch }  size="sm" className="!absolute right-1 top-[6px] rounded flex "><FaSearch /></Button>
+                            </Tooltip>
+                        </div>
                     </div>
                 </div>
             </Navbar >

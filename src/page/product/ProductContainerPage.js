@@ -35,10 +35,13 @@ function ProductContainerPage() {
                 </div>
 
                 <div className='md:col-start-3 col-start-4 col-end-13 mt--20 mx-auto'>
-                    { !loading && items.data && items.data.length != 0 ? <CardProductsContainer titleOfBar={ "All products" } prodcuts={ items.data } /> :
-                        <div className='m-10'>
-                            <h5 className="font-sans text-xl font-semibold leading-snug text-gray-700 text-center">not found product about your search....</h5>
-                        </div>
+                    { !loading ?
+                        items.data && items.data.length !== 0 ? <CardProductsContainer titleOfBar={ "All products" } prodcuts={ items.data } />
+                            :
+                            <div className='m-10'>
+                                <h5 className="font-sans text-xl font-semibold leading-snug text-gray-700 text-center">not found product about your search....</h5>
+                            </div>
+                        : <Spinner className='w-[50px] h-[50px] m-auto' />
                     }
 
 

@@ -1,27 +1,28 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { getAllProducts, getAllProductsPage, getAllProductsSearch } from "../../redux/actions/productsAtion";
+import { getAllProductsSearch } from "../../redux/actions/productsAtion";
 
 function ViewSreachProductsHook() {
     let limit = 8;
     const dispatch = useDispatch();
     let wordL = "";
-    const getProduc =  () => {
+    const getProduc = () => {
 
         // if ( localStorage.getItem( "searchWord" ) != null ){
         // }
 
         sortData();
-        setTimeout( async () => {
 
+        const getAsync = async () => {
             getStorge();
             await dispatch( getAllProductsSearch( `sort=${sort}&limit=${limit}&keyword=${wordL}&${queryCat}&${brandCat}${pricefromString}${priceToString}` ) )
-        }, 1000 )
+        }
+        getAsync()
+
 
     }
-    useEffect( () => {
-        getProduc( "" )
-    }, [] )
+    // useEffect( () => {
+    //     getProduc( "" )
+    // }, [] )
 
     const allProducts = useSelector( state => state.allproduts.allproducts )
     let items = [];
@@ -69,7 +70,6 @@ function ViewSreachProductsHook() {
             priceToString = `&price[lte]=${priceTo}`
         }
     }
-
 
     let sortType = ""; let sort = ""
     //when user choose sort 

@@ -13,10 +13,10 @@ function HomePage() {
         <div>
             <Slideshow />
             <CategoryContainer />
-            <CardProductsContainer titleOfBar={"New products"} prodcuts={items}/>
+            <CardProductsContainer titleOfBar={"New products"} btnTitle={ "More" } prodcuts={items}/>
             <Brands />
             <Ads />
-            <CardProductsContainer titleOfBar={"wish list"} prodcuts={items}/>
+            <CardProductsContainer titleOfBar={"wish list"} btnTitle={ "More" } prodcuts={items}/>
             {/* <NewProducts /> */}
         </div>
     )

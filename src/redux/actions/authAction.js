@@ -140,7 +140,6 @@ export const updateUserProfileData = ( body ) => async ( dispatch ) => {
 export const updateUserPassword = ( body ) => async ( dispatch ) => {
     try {
         const response = await useInsUpdateData( `api/v1/users/changeMyPassword`, body );
-        console.log( response )
         dispatch( {
             type: UPDATE_USER_PASSWORD,
             payload: response,

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaGlobeAmericas, FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
 import ColorOfProduct from './ColorOfProduct';
-import { Button, Chip } from '@material-tailwind/react';
+import { Button, Chip, IconButton, Tooltip } from '@material-tailwind/react';
 import { FaShoppingCart } from "react-icons/fa";
 import AddToCartHook from '../../hook/cart/add-to-cart-hook';
 import { ToastContainer } from 'react-toastify';
@@ -15,7 +15,7 @@ function DetailsProduct( { id, title, category, description, price, brand, color
     const [ handelFav, Fav ] = ProductCardHook( id, favProduct )
 
     return (
-        <div className='pr-2'>
+        <div className='p-6 sm:p-12 bg-white rounded-3xl shadow-2xl'>
             <div>
                 <div>
                     <h2 className='text-md md:text-xl  font-bold mb-2 bg-[#eff0f4] p-2 rounded-lg text-blue-gray-900 text-center'>{ title }</h2>
@@ -24,7 +24,11 @@ function DetailsProduct( { id, title, category, description, price, brand, color
                     <div className='flex text-yellow-700 pr-1 text-sm md:text-lg items-baseline'>
                         <FaStar className='mr-1' /> { rateAvg } </div>
                     <span className='text-xs text-blue-gray-500'>({ rateQty } reviews )</span>
-                    <div onClick={ handelFav } className='cursor-pointer'> { !Fav ? <FaRegHeart className='mb-2' /> : <FaHeart className='mb-2 text-red-700' /> }</div>
+                    <Tooltip content="Add to wish list" className="bg-[#474751]">
+                        <IconButton color="red" variant="text" onClick={ handelFav }>
+                            <div className='cursor-pointer'> { !Fav ? <FaRegHeart className='' /> : <FaHeart className='text-red-700' /> }</div>
+                        </IconButton>
+                    </Tooltip>
                 </span>
                 <span className='text-sm md:text-lg  font-sans text-blue-gray-800 hover:text-[#2196f3] mb-10'>
                     <Link to={ `/products/category/${category}/${categoryId}` }>
@@ -53,7 +57,7 @@ function DetailsProduct( { id, title, category, description, price, brand, color
                 <span className='text-md md:text-lg  font-bold mb-2 bg-[#eff0f4] p-2 rounded-lg text-blue-gray-900 '>Details:</span>
                 <p className='text-sm md:text-lg  font-sans text-blue-gray-600 my-4'>{ description }</p>
             </div>
-            <div className='flex justify-between text-sm md:text-md my-4  font-bold bg-[#eff0f4] p-2 rounded-lg text-blue-gray-900'>
+            <div className='flex justify-between flex-wrap gap-4 text-sm md:text-md my-4  font-bold bg-[#eff0f4] p-2 rounded-lg text-blue-gray-900'>
                 <span>sold: { sold }</span>
                 <span>sold total: { sold && price ? sold * price : 0 }$</span>
                 <span>available quantity: { quantity }</span>

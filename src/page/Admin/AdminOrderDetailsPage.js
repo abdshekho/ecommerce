@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import AdminSdieBar from '../../Component/Admin/AdminSdieBar'
-import AdminAllOrders from '../../Component/Admin/AdminAllOrders'
 import AdminOrderDetails from '../../Component/Admin/AdminOrderDetails';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllOrders, getOneOrders } from '../../redux/actions/orderAction';
+import {  getOneOrders } from '../../redux/actions/orderAction';
 import UserOrder from '../../Component/user/UserOrder';
 import { Spinner } from '@material-tailwind/react';
 
@@ -29,22 +28,22 @@ function AdminOrderDetailsPage() {
 
     return (
         <div >
-            <div className='lg:container grid grid-cols-12 pt-10'>
+            <div className='grid grid-cols-12'>
                 <div className='col-start-1 col-end-4 md:col-end-3'>
                     <AdminSdieBar />
                 </div>
 
-                <div className='md:col-start-3 col-start-4 col-end-13 '>
+                <div className='col-start-4 md:col-start-3 col-end-13 pt-10 '>
 
-                    { resGetAllOrder && resGetAllOrder.data && resGetAllOrder.data.cartItems ?
+                    { resGetAllOrder && resGetAllOrder.data && resGetAllOrder.data.cartItems &&resGetAllOrder.data.user ?
 
                         <div className='container  '>
                             <h1 className='text-md md:text-xl  font-bold mb-1 pb-4 text-blue-gray-700'>Client Details</h1>
                             <div className='container bg-white rounded-lg py-10'>
                                 <div className='pl-2 text-sm md:text-md'>
-                                    <div>Name: <span className='text-blue-gray-500'>{ resGetAllOrder.data.user.name }</span></div>
-                                    <div>Phone: <span className='text-blue-gray-500'>{ resGetAllOrder.data.user.phone }</span></div>
-                                    <div>Email: <span className='text-blue-gray-500'>{ resGetAllOrder.data.user.email }</span></div>
+                                    <div>Name: <span className='text-blue-gray-500'>{ resGetAllOrder.data.user?.name }</span></div>
+                                    <div>Phone: <span className='text-blue-gray-500'>{ resGetAllOrder.data.user?.phone }</span></div>
+                                    <div>Email: <span className='text-blue-gray-500'>{ resGetAllOrder.data.user?.email }</span></div>
                                 </div>
                                 <AdminOrderDetails  isDelivered={ resGetAllOrder.data.isDelivered } isPaid={ resGetAllOrder.data.isPaid } />
                             </div>

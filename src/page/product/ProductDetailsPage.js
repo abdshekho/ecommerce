@@ -26,12 +26,11 @@ function ProductDetailsPage() {
             prodcutsLike = produtLike.data.slice( 0, 4 )
         }
     }
-    console.log( item )
     return (
         <div className=''>
             <NavOfProduct />
-            <div className='container  block md:grid-cols-12 md:grid  mt-10'>
-                <div className='col-span-4 md:w-[90%] bg-white p-2 rounded-xl'>
+            <div className='container   flex flex-col gap-5 md:grid-cols-12 md:grid  mt-10 items-center'>
+                <div className='col-span-4 p-10 md:p-2 md:w-[90%] bg-white  rounded-3xl shadow-2xl'>
                     <SlideShowProduct images={ images } />
                 </div>
                 <div className='col-span-8 mb-10 md:mb-0'>

@@ -21,7 +21,8 @@ function Category() {
         <div className='container mt-20 bg-[#f2f1f6d1] py-10 rounded-3xl  shadow-md'>
             <BarOfHomePage title={ "Categoriesss" } btnTitle={ "More" } pathRoute={ "AllCategory" } />
 
-            <div className='grid items-baseline grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8'>
+            {/* <div className='grid items-baseline grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8'> */ }
+            <div className='grid items-stretch grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8'>
 
                 { loading === false ?
                     category && category.data ? (
@@ -32,12 +33,7 @@ function Category() {
                     : <div><Spinner className="h-16 w-16 text-blue-500/10" /></div>
 
                 }
-                {/* 
-                <CategoryCard srcImg={ clothes } title="categorys" />
-                <CategoryCard srcImg={ laptop } title="categorys" />
-                <CategoryCard srcImg={ cat2 } title="categorys" />
-                <CategoryCard srcImg={ laptop } title="categorys" />
-                <CategoryCard srcImg={ pic } title="categorys" /> */}
+                
             </div>
         </div >
     )

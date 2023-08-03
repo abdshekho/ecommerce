@@ -2,7 +2,7 @@ import React from 'react'
 import { FaStar, FaTrashAlt } from "react-icons/fa"
 import ColorOfProduct from '../Products/ColorOfProduct'
 
-import { Button, Input, Spinner } from '@material-tailwind/react'
+import { Button, Input, Spinner, Tooltip } from '@material-tailwind/react'
 import ApplyCopon from './applyCopon'
 import { URL } from '../../Api/baseUrlWithoutAxios'
 import { Link } from 'react-router-dom'
@@ -14,10 +14,12 @@ function CartItem( { idCartItem, Category, title, imageCover, Brand, price, colo
     const imagePath = `${URL}products/${imageCover}` || "Product Delted"
     return (
         <div className='container bg-white flex flex-col sm:grid  grid-cols-12 py-2 my-4 rounded-lg shadow-lg'>
-            <div className='col-span-3'>
+            <div className='col-span-3 sm:mr-4'>
                 { imagePath.length > 20 ?
                     <Link to={ `/products/${idProduct}` }>
-                        <img src={ imagePath } alt='asPhoto' className='w-full'></img>
+                        <Tooltip content={`More details about ${title}`} className="bg-[#474751]">
+                            <img src={ imagePath } alt='asPhoto' className='w-full'></img>
+                        </Tooltip>
                     </Link>
 
                     : <div>"Product Delted"</div>

@@ -1,6 +1,6 @@
 import React from 'react'
 // import { FaTrashAlt } from "react-icons/fa"
-import { Chip } from '@material-tailwind/react'
+import { Chip, Tooltip } from '@material-tailwind/react'
 import { Link } from 'react-router-dom'
 import { URL } from '../../Api/baseUrlWithoutAxios'
 import ColorOfProduct from '../Products/ColorOfProduct'
@@ -8,10 +8,12 @@ function UserOrderItem( { title, idProduct, imageCover, count, price, colorProdu
 
     const imagePath = `${URL}products/${imageCover}` || "Product Delted"
     return (
-        <div  className='containerflex flex-col sm:grid  grid-cols-12 py-2 border-b-[1px] border-gray-400'>
-            <div className='col-span-5 md:col-span-3'>
+        <div className='containerflex flex-col sm:grid  grid-cols-12 py-2 border-b-[1px] border-gray-400'>
+            <div className='col-span-5 md:col-span-3 mr-4'>
                 <Link to={ `/products/${idProduct}` }>
-                    <img src={ imagePath } alt='' className='w-full'></img>
+                    <Tooltip content={ `More details about ${title}` } className="bg-[#474751]">
+                        <img src={ imagePath } alt='' className='w-full '></img>
+                    </Tooltip>
                 </Link>
             </div>
             <div className='col-span-7 flex flex-col py-4 gap-2'>

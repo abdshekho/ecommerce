@@ -14,7 +14,7 @@ function Comment( { review } ) {
 
 
     const userLoggedIn = localStorage.getItem( "user" ) != null ? JSON.parse( localStorage.getItem( "user" ) )._id : ""
-    const userThatReview = review.user._id
+    const userThatReview = review.user && review.user._id ? review.user._id : 0
 
     const propsOfStartRating = {
         count: 5,
@@ -29,8 +29,8 @@ function Comment( { review } ) {
         value: newRatingValue
     }
     return (
-        <div className='py-4 '>
-            <div className='flex items-center justify-between border-t-[1px] border-gray-400 pt-2 '>
+        <div className='p-4 bg-white rounded-lg shadow-lg'>
+            <div className='flex items-center justify-between  pt-2  '>
                 <div className='flex items-center'>
 
                     <span className='text-md md:text-xl text-blue-900'>{ review ? review.user.name : "" }</span>

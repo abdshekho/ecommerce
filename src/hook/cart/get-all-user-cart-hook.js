@@ -12,13 +12,14 @@ function GetAllUserCart() {
     if ( localStorage.getItem( "user" ) )
         user = JSON.parse( localStorage.getItem( "user" ) )
 
+
     useEffect( () => {
         const get = async () => {
             setLoadignGet( true )
             await dispatch( getAllUserCartItems() )
             setLoadignGet( false )
         }
-        if ( user )
+        if ( user && user.role && user.role === "user" )
             get();
     }, [] )
 

@@ -36,6 +36,7 @@ import ResetPasswordPage from "./page/Auth/ResetPasswordPage";
 import ProductByCategory from "./page/product/ProductByCategory";
 import ProudctByBrand from "./page/product/ProudctByBrand";
 import AdmiFavoritPage from "./page/Admin/AdmiFavoritPage";
+import About from "./page/About/About";
 // import baseUrl from "./Api/baseURL";
 function App() {
 
@@ -57,6 +58,7 @@ function App() {
               <Route path="/AllProudct" element={ <ProductContainerPage /> } />
               <Route path="/products/:id" element={ <ProductDetailsPage /> } />
               <Route path="/Cart" element={ <CartPage /> } />
+              <Route path="/About" element={ <About /> } />
               <Route path="/user/forget-password" element={ <ForgetPasswordPage /> } />
               <Route path="/user/verify-code" element={ <VerifyPasswordPage /> } />
               <Route path="/user/reset-password" element={ <ResetPasswordPage /> } />
@@ -66,7 +68,6 @@ function App() {
 
               <Route element={ <ProtectedRoute auth={ isAdmin } /> }>
                 <Route path="/admin/allorders" element={ <AdminAllOrderPage /> } />
-                {/* <Route path="/admin/order/id" element={ <AdminOrderDetailsPage /> } /> */ }
                 <Route path="/admin/order/:id" element={ <AdminOrderDetailsPage /> } />
                 <Route path="/admin/addbrand" element={ <AdminAddBrandPage /> } />
                 <Route path="/admin/addCategory" element={ <AdminAddCategoryPage /> } />

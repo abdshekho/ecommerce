@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import DropDownFilter from './DropDown'
 import { FaArrowAltCircleDown, FaArrowAltCircleUp, FaFreeCodeCamp, FaRegListAlt, FaSortAmountDown, FaSortAmountUpAlt, FaStar } from 'react-icons/fa';
 import { Menu, MenuHandler, MenuList, MenuItem, Button, } from "@material-tailwind/react";
 

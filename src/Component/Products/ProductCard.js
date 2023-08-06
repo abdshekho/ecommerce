@@ -10,6 +10,7 @@ import ProductCardHook from '../../hook/products/product-card-hook';
 import { IconButton, Spinner, Tooltip } from '@material-tailwind/react';
 import AddToCartHook from '../../hook/cart/add-to-cart-hook';
 import AddToCartFromCardHook from '../../hook/cart/add-to-cart-from-cardProduct-hook';
+import { LinearProgress } from '@mui/material';
 function ProductCard( { image, titleOfProdcut, description, price, id, rateAvg, favProduct } ) {
     const [ handelFav, Fav ] = ProductCardHook( id, favProduct )
     const [ handelAddToCart, loadingAdd ] = AddToCartFromCardHook( id )
@@ -45,12 +46,15 @@ function ProductCard( { image, titleOfProdcut, description, price, id, rateAvg, 
                     </div>
                     <div className='flex text-yellow-700 pr-1 text-sm md:text-md items-center'>{ rateAvg ? rateAvg : 4.8 } <FaStar className='ml-1 ' /></div>
                     <Tooltip content="Add to cart" className="bg-[#474751]">
-                        <IconButton  variant="text"  onClick={ handelAddToCart }>
+                        <IconButton disabled={ loadingAdd } variant="text" onClick={ handelAddToCart }>
                             <div className='cursor-pointer text-[#474751]'><FaShoppingCart className='w-[25px] h-[25px]' /></div>
                         </IconButton>
                     </Tooltip>
                 </div>
-                { loadingAdd ? <Spinner /> : <div></div> }
+                {/* { loadingAdd ? <Spinner /> : <div></div> } */ }
+                { loadingAdd ? <LinearProgress /> : <div></div> }
+
+
             </div>
             <ToastContainer />
         </div >

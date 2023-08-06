@@ -8,17 +8,19 @@ const ViewAllProductsCategoryHook = ( catID ) => {
     const [ loading, setLoding ] = useState( false )
 
     const getProduct = async () => {
+        setLoding( true )
         await dispatch( getAllProductsByCategory( '', limit, catID ) )
+        setLoding( false )
     }
     useEffect( () => {
-        setLoding( true )
         getProduct()
-        setLoding( false )
     }, [] )
 
     //when click pagination
     const onPress = async ( page ) => {
+        setLoding( true )
         await dispatch( getAllProductsByCategory( page, limit, catID ) )
+        setLoding( false )
     }
 
     const allProducts = useSelector( ( state ) => state.allproduts.allProductCat )

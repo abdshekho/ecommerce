@@ -13,7 +13,9 @@ function CardProductsConainerFavorite( { titleOfBar, prodcuts } ) {
 
     return (
         <div className='container mt-20 shadow-md bg-[#f2f1f6d1] py-10 rounded-3xl  '>
-            <BarOfHomePage title={ titleOfBar } btnTitle={ "More" } pathRoute={ "AllProudct" } />
+            <div className='hidden sm:block'>
+                <BarOfHomePage title={ titleOfBar } btnTitle={ "More" } pathRoute={ "AllProudct" } />
+            </div>
             <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8'>
                 { prodcuts ? prodcuts.map( ( item ) => {
                     return <ProductCard key={ item._id } image={ `${URL}products/${item.imageCover}` } description={ item.description } price={ item.price } id={ item._id } titleOfProdcut={ item.title } rateAvg={ item.ratingsAverage } favProduct={ favProduct } />

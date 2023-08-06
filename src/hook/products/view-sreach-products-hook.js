@@ -1,28 +1,24 @@
 import { useDispatch, useSelector } from "react-redux"
 import { getAllProductsSearch } from "../../redux/actions/productsAtion";
+import { useState } from "react";
 
 function ViewSreachProductsHook() {
     let limit = 8;
     const dispatch = useDispatch();
     let wordL = "";
+    const [ loading, setLoading ] = useState( false )
+
     const getProduc = () => {
 
-        // if ( localStorage.getItem( "searchWord" ) != null ){
-        // }
-
         sortData();
-
         const getAsync = async () => {
+            setLoading( true )
             getStorge();
             await dispatch( getAllProductsSearch( `sort=${sort}&limit=${limit}&keyword=${wordL}&${queryCat}&${brandCat}${pricefromString}${priceToString}` ) )
+            setLoading( false )
         }
         getAsync()
-
-
     }
-    // useEffect( () => {
-    //     getProduc( "" )
-    // }, [] )
 
     const allProducts = useSelector( state => state.allproduts.allproducts )
     let items = [];
@@ -39,10 +35,12 @@ function ViewSreachProductsHook() {
     let queryCat = "", brandCat = "", priceTo = "", priceFrom = "";
     //to pagination
     const getPage = async ( page ) => {
-
+        setLoading( true )
         getStorge()
         sortData();
         await dispatch( getAllProductsSearch( `sort=${sort}&limit=${limit}&page=${page}&keyword=${wordL}&${queryCat}&${brandCat}${pricefromString}${priceToString}` ) )
+        setLoading( false )
+
     }
     const getStorge = () => {
         if ( localStorage.getItem( "searchWord" ) != null )
@@ -96,7 +94,7 @@ function ViewSreachProductsHook() {
         }
 
     }
-    return [ items, getPage, getProduc ]
+    return [ items, getPage, getProduc, loading ]
 
 
 } export default ViewSreachProductsHook

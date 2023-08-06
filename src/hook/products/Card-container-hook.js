@@ -25,12 +25,12 @@ function CardContainerHook() {
     useEffect( () => {
         if ( !loading ) {
             if ( res && res.data && res.data.length !== 0 && localStorage.getItem( 'token' ) != null ) {
-                setFavProduct( res.data.map( item => item._id ) )
+                setFavProduct( res?.data?.map( item => item._id ) )
             }
         }
 
     }, [ loading ] )
-    return [ favProduct ]
+    return [ favProduct ,loading]
 }
 
 export default CardContainerHook

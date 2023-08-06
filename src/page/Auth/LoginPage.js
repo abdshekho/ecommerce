@@ -4,13 +4,17 @@ import { Link } from 'react-router-dom';
 import LoginHook from '../../hook/auth/Login-hook';
 import Spinner from "../../Component/utility/Spinner"
 import { ToastContainer } from 'react-toastify';
+import { Box, LinearProgress } from '@mui/material';
 
 function LoginPage() {
     const [ email, password, loading, onChangeEmail, onChangePassword, onSubmit ] = LoginHook()
     return (
-        <div className='md:container flex justify-center pt-10'>
-
-            <Card color="transparent" shadow={ false } className='bg-white py-20 px-10 w-full md:w-[60%]'>
+        <div className='md:container flex justify-center pt-10 relative'>
+            { loading ?
+                <div className='w-[150%] absolute z-20 top-[-2px]  '>
+                    <LinearProgress />
+                </div> : <div></div> }
+            <Card color="transparent" shadow={ false } className={ `bg-white ${loading ? "opacity-60 " : "opacity-100 "}py-20 px-10 w-full md:w-[60%]` }>
                 <Typography variant="h4" color="blue-gray" >
                     Sign In
                 </Typography>
@@ -24,7 +28,7 @@ function LoginPage() {
                         <Input type="password" size="lg" label="Password" value={ password } onChange={ onChangePassword } />
                     </div>
 
-                    <Button className="mt-6" fullWidth onClick={ onSubmit }>
+                    <Button disabled={ loading } className="mt-6" fullWidth onClick={ onSubmit }>
                         Register
                     </Button>
                     <Typography color="gray" className="mt-4 text-center font-normal">
@@ -43,10 +47,16 @@ function LoginPage() {
                         </Link>
                     </Typography>
                 </form>
-                { loading ? ( loading === true ? <div className='flex justify-center m-10'><Spinner /></div> : null ) : null }
+
+
             </Card>
+            {
+                loading ? ( loading ? <div className='w-[98%] md:w-[57%] absolute z-20 bottom-0  '>
+                    <LinearProgress />
+                </div> : null ) : null
+            }
             <ToastContainer />
-        </div>
+        </div >
     );
 }
 

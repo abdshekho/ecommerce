@@ -11,13 +11,13 @@ import Spinner from '../utility/Spinner';
 function AdminAddSubCategory() {
     const [ id, setId ] = useState( "" )
     const [ name, setName ] = useState( "" )
-    const [ loading , setLoadind ] = useState( true )
+    const [ loading, setLoadind ] = useState( true )
     const dispatch = useDispatch();
 
     useEffect( () => {
         dispatch( getAllCategory() )
-    },[])
-    const category = useSelector( state => state.allCategory.category.data )
+    }, [] )
+    const category = useSelector( state => state.allCategory.category)
     const subCategory = useSelector( state => state.subCategory.subCategory )
     const loadingR = useSelector( state => state.allCategory.loading )
 
@@ -25,32 +25,32 @@ function AdminAddSubCategory() {
         setId( e )
     }
     const handelSubmite = async ( e ) => {
-        if(name === "" && id === ""){
-            notifyWarning("Enter information")
+        if ( name === "" && id === "" ) {
+            notifyWarning( "Enter information" )
             return
         }
-        if(name === ""){
-            notifyWarning("Enter sub category name")
+        if ( name === "" ) {
+            notifyWarning( "Enter sub category name" )
             return
         }
-        if(id === ""){
-            notifyWarning("selecet category")
+        if ( id === "" ) {
+            notifyWarning( "selecet category" )
             return
         }
-        if(subCategory){
+        if ( subCategory ) {
 
-            setLoadind(false)
-            await dispatch(createSubCategory({name:name,category:id}))
-                setLoadind(true)
-                notifySuccess("Complate action")
-                setName("")
-                
-                return
-            
+            setLoadind( false )
+            await dispatch( createSubCategory( { name: name, category: id } ) )
+            setLoadind( true )
+            notifySuccess( "Complate action" )
+            setName( "" )
+
+            return
+
             // notifyWarning("something is error")
 
         }
-        
+
 
 
     }
@@ -66,8 +66,8 @@ function AdminAddSubCategory() {
 
                         <Select label="Category parent" onChange={ handelChange } >
                             { loadingR === false ?
-                                category[ 0 ] ? (
-                                    category.map( ( item ) => {
+                                category && category.data ? (
+                                    category.data?.map( ( item ) => {
                                         return <Option key={ item._id } value={ item._id }>{ item.name } </Option>
                                     } )
                                 ) : null
@@ -79,7 +79,7 @@ function AdminAddSubCategory() {
                     <Button className='ml-2' onClick={ handelSubmite }>Save</Button>
                 </div>
             </div>
-                {!loading?<div className='m-10'><Spinner/></div>:null}
+            { !loading ? <div className='m-10'><Spinner /></div> : null }
             <ToastContainer />
         </div>
     )

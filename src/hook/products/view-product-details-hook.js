@@ -1,20 +1,20 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOneProduct, getProductLike } from '../../redux/actions/productsAtion'
 import { getOneCategoyr } from '../../redux/actions/categoryAction'
 import { getOneBrand } from '../../redux/actions/brandAction'
 
 function ViewProductDetailsHook( productID ) {
+    const [ loading, setLoading ] = useState( false )
     const dispatch = useDispatch()
     useEffect( () => {
         const get = async () => {
-
             await dispatch( getOneProduct( productID ) );
 
         }
         get();
 
-    }, [productID] )
+    }, [ productID ] )
 
     const oneProduct = useSelector( state => state.allproduts.oneProudct )
     let items = [];
@@ -31,9 +31,11 @@ function ViewProductDetailsHook( productID ) {
         if ( items )
             if ( items.length !== 0 ) {
                 const get = async () => {
+                    setLoading( true )
                     await dispatch( getOneCategoyr( items.category ) )
                     await dispatch( getOneBrand( items.brand ) )
                     await dispatch( getProductLike( items.category ) )
+                    setLoading( false )
                 }
                 get();
             }
@@ -59,7 +61,7 @@ function ViewProductDetailsHook( productID ) {
 
     const produtLike = useSelector( state => state.allproduts.productLike )
 
-    return [ items, category, brand, produtLike ]
+    return [ items, category, brand, produtLike, loading ]
 
 
 

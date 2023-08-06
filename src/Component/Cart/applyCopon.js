@@ -49,29 +49,24 @@ function ApplyCopon( idCartItem, count ) {
             }
         }
     }, [ loaingCopon ] )
-
+    
     const [ totalCartPrice, setTotalPrice ] = useState( 0 );
     useEffect( () => {
-
         if ( resUpdateCart && resUpdateCart.data && resUpdateCart.data.data && resUpdateCart.data.data.totalCartPrice ) {
             setTotalPrice( resUpdateCart.data.data.totalCartPrice )
         }
         if ( resUpdateCart && resUpdateCart.data && resUpdateCart.data.data && resUpdateCart.data.data.totalAfterDiscount ) {
             setPriceAfterDiscount( resUpdateCart.data.data.totalAfterDiscount )
         }
-
     }, [ resUpdateCart ] )
+
     useEffect( () => {
 
         if ( resGetCart && resGetCart.data && resGetCart.data.products ) {
             setTotalPrice( resGetCart.data.totalCartPrice )
-            // if ( resGetCart.data.coupon )
-            //     setCouponName( resGetCart.data.coupon )
         }
         if ( resGetCart && resGetCart.data && resGetCart.data.products && resGetCart.data.totalCartPrice ) {
             setTotalPrice( resGetCart.data.totalCartPrice )
-            // if ( resGetCart.data.coupon )
-            //     setCouponName( resGetCart.data.coupon )
         }
         if ( resGetCart && resGetCart.data && resGetCart.data.totalAfterDiscount ) {
             setPriceAfterDiscount( resGetCart.data.totalAfterDiscount )

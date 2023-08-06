@@ -33,7 +33,7 @@ function Comment( { review } ) {
             <div className='flex items-center justify-between  pt-2  '>
                 <div className='flex items-center'>
 
-                    <span className='text-md md:text-xl text-blue-900'>{ review ? review.user.name : "" }</span>
+                    <span className='text-md md:text-xl text-blue-900'>{ review && review.user ? review.user.name : "John Richard " }</span>
                     <span className='flex text-yellow-700 pr-1 text-sm md:text-md ml-2'> <FaStar className='pt-1' /> { review ? review.rating : 4.8 }</span>
                 </div>
                 { userLoggedIn === userThatReview ?

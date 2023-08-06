@@ -160,7 +160,7 @@ const NavBarLogin = () => {
 
 
                     </div>
-                    <div className="relative flex w-full gap-2 md:w-[300px] ">
+                    <div className="relative flex justify-center w-full gap-2 md:w-[300px] ">
                         {/* <Input label="Search"
                             className="" onChange={ onChangeSearch } value={ searchWord }
                             icon={<FaSearch className="hover:text-blue-600" />}/> */}

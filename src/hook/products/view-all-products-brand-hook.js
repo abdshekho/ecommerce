@@ -12,14 +12,14 @@ const ViewAllProductsBarndHook = ( brandID ) => {
         setLoading( false )
     }
     useEffect( () => {
-        setLoading( true )
         getProduct()
-        setLoading( false )
     }, [] )
 
     //when click pagination
     const onPress = async ( page ) => {
+        setLoading( true )
         await dispatch( getAllProductsByBrand( page, limit, brandID ) )
+        setLoading( false )
     }
 
     const allBrand = useSelector( ( state ) => state.allproduts.allProductBrand )

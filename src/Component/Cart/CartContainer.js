@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { clearAllCartItem } from '../../redux/actions/cartAction'
 import { notifySuccess } from '../../hook/useNotification'
 import { ToastContainer } from 'react-toastify'
+import SkeltonCartItem from './SkeltonCartItem'
 
 function CartContainer() {
     const [ itemNum, , loadingGet ] = GetAllUserCart()
@@ -38,7 +39,7 @@ function CartContainer() {
     return (
         <div className='container flex flex-col-reverse lg:grid grid-cols-12 py-10 '>
             <div className='col-span-9 '>
-                { !loadingGet ? cartItem && cartItem.length && cartItem.length != 0 ?
+                { !loadingGet && cartItem ? cartItem && cartItem.length && cartItem.length != 0 ?
                     cartItem.map( ( item, index ) => {
                         // if ( item.title && item.color && item._id && item.product && item.product.title && item.product.ratingsAverage && item.product.imageCover && item.count && item.product.category && item.product.category.name && item.product.brand && item.product.brand.name && item.price )
                         if ( item.product !== null )
@@ -48,7 +49,13 @@ function CartContainer() {
                             return <CartItem key={ index } idCartItem={ item._id } color={ item.color || "#ffffff" } title={ "product may be Deleted already" } ratingsAverage={ "product may be Deleted already" } imageCover={ "product may be Deleted already" } count={ item.count } Category={ "product may be Deleted already" } Brand={ "product may be Deleted already" } price={ item.price } />
 
                     } )
-                    : <h5 className="font-sans text-xl font-semibold leading-snug text-gray-700 text-center">you did't add any product to cart</h5> : <Spinner className="h-16 w-16 text-blue-500/10" /> }
+                    : <h5 className="font-sans text-xl font-semibold leading-snug text-gray-700 text-center">you did't add any product to cart</h5>
+                    : <div>
+                        <SkeltonCartItem />
+                        <SkeltonCartItem />
+                    </div>
+                    // <Spinner className="h-16 w-16 text-blue-500/10" />
+                }
                 { cartItem && cartItem.length && cartItem.length != 0 ?
                     <div className='flex justify-center my-10'>
                         <Button color='red' onClick={ handelDelete }>Empty the cart</Button>

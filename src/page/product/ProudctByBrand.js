@@ -4,6 +4,8 @@ import CardProductsContainer from '../../Component/Products/CardPrandsContainer'
 import { Spinner } from '@material-tailwind/react';
 import Pagination from '../../Component/utility/Pagination';
 import ViewAllProductsBarndHook from '../../hook/products/view-all-products-brand-hook';
+import BarOfHomePage from '../../Component/utility/BarOfHomePage';
+import { Skeleton } from '@mui/material';
 
 function ProudctByBrand() {
 
@@ -15,12 +17,31 @@ function ProudctByBrand() {
     else
         pageCount = 0
 
+    const arr = [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+
     return (
         <div className=''>
             { !loading ? items.length !== 0 ?
                 <CardProductsContainer titleOfBar={ name + "'s products" } prodcuts={ items } />
                 : <h1 className='text-md md:text-xl  font-bold mb-1  text-blue-gray-700 mt-20 text-center'>{ name + "'s products" } not available yet</h1>
-                : <Spinner className='w-[50px] h-[50px] m-20' />
+                :
+
+
+                <div className='container mt-20 shadow-md bg-[#f2f1f6d1] py-10 rounded-3xl  '>
+                    <BarOfHomePage title={ name + "'s products" } btnTitle={ "More" } />
+                    <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8'>
+                        { arr.map( () => {
+                            return (
+
+                                <Skeleton variant="rounded" height={ 330 } className=' sm:w-[190px] md:w-[300px] lg:w-[220px] xl:w-[300px]' />
+
+                            )
+                        } ) }
+
+                    </div>
+                </div>
+
+                // <Spinner className='w-[50px] h-[50px] m-20' />
             }
             <div className='md:col-start-3 col-start-4 col-end-13 '>
             </div>

@@ -6,6 +6,7 @@ import { Button, Input, Spinner, Tooltip } from '@material-tailwind/react'
 import ApplyCopon from './applyCopon'
 import { URL } from '../../Api/baseUrlWithoutAxios'
 import { Link } from 'react-router-dom'
+import { LinearProgress } from '@mui/material'
 
 
 function CartItem( { idCartItem, Category, title, imageCover, Brand, price, color, count, ratingsAverage, idProduct } ) {
@@ -17,7 +18,7 @@ function CartItem( { idCartItem, Category, title, imageCover, Brand, price, colo
             <div className='col-span-3 sm:mr-4'>
                 { imagePath.length > 20 ?
                     <Link to={ `/products/${idProduct}` }>
-                        <Tooltip content={`More details about ${title}`} className="bg-[#474751]">
+                        <Tooltip content={ `More details about ${title}` } className="bg-[#474751]">
                             <img src={ imagePath } alt='asPhoto' className='w-full'></img>
                         </Tooltip>
                     </Link>
@@ -34,10 +35,10 @@ function CartItem( { idCartItem, Category, title, imageCover, Brand, price, colo
                 <div className=''>
 
                     <div className="relative flex max-w-[300px] my-6">
-                        { loadingCount ? <Spinner className="h-16 w-16 " /> : <div></div> }
                         <Input type="number" label="Quantity" value={ newCount } onChange={ ( e ) => setNewCount( e.target.value ) } className="pr-20" containerProps={ { className: "min-w-0", } } />
                         <Button size="sm" onClick={ handelCount } color={ "blue" } className="!absolute right-1 top-1 rounded" disabled={ newCount <= 0 }>Set</Button>
                     </div>
+                    { loadingCount ? <LinearProgress /> : <div></div> }
 
                 </div>
             </div>

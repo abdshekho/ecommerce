@@ -6,13 +6,16 @@ import CardProductsContainer from '../../Component/Products/CardPrandsContainer'
 import { useParams } from 'react-router-dom'
 import ViewProductDetailsHook from '../../hook/products/view-product-details-hook'
 import CardContainerHook from '../../hook/products/Card-container-hook'
+import { Skeleton } from '@mui/material'
 // import mobile from "../../images/mobile1.png";
 
 
 function ProductDetailsPage() {
     const { id } = useParams();
-    const [ item, category, brand, produtLike ] = ViewProductDetailsHook( id );
+    const [ item, category, brand, produtLike, loading ] = ViewProductDetailsHook( id );
     const [ favProduct ] = CardContainerHook()
+
+
 
     let images = []
     let prodcutsLike = []
@@ -31,10 +34,25 @@ function ProductDetailsPage() {
             <NavOfProduct />
             <div className='container   flex flex-col gap-5 md:grid-cols-12 md:grid  mt-10 items-center'>
                 <div className='col-span-4 p-10 md:p-2 md:w-[90%] bg-white  rounded-3xl shadow-2xl'>
-                    <SlideShowProduct images={ images } />
+                    { !loading ?
+                        <SlideShowProduct images={ images } />
+                        :
+                        <div>
+                            <Skeleton variant="rounded" height={ 500 } className='w-[300px] md:w-[90%] m-auto' />
+                            <div className='flex gap-2 mt-10 ml-2'>
+                                <Skeleton variant="rounded" height={ 40 } width={ 40 } />
+                                <Skeleton variant="rounded" height={ 40 } width={ 40 } />
+                                <Skeleton variant="rounded" height={ 40 } width={ 40 } />
+                                <Skeleton variant="rounded" height={ 40 } width={ 40 } />
+
+                            </div>
+                        </div>
+                    }
                 </div>
                 <div className='col-span-8 mb-10 md:mb-0'>
-                    <DetailsProduct id={ item._id } title={ item.title } categoryId={ item.category } brandId={ item.brand } createdAt={ item.createdAt } sold={ item.sold } quantity={ item.quantity } category={ category } description={ item.description } price={ item.price } brand={ brand } colors={ item.availableColors } rateQty={ rateQty } rateAvg={ rateAvg } favProduct={ favProduct } />
+
+                    <DetailsProduct loading={ loading } id={ item._id } title={ item.title } categoryId={ item.category } brandId={ item.brand } createdAt={ item.createdAt } sold={ item.sold } quantity={ item.quantity } category={ category } description={ item.description } price={ item.price } brand={ brand } colors={ item.availableColors } rateQty={ rateQty } rateAvg={ rateAvg } favProduct={ favProduct } />
+
                 </div>
             </div>
             <div className='container bg-gray-100 p-6 rounded-3xl mt-10'>

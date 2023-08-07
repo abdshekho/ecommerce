@@ -29,7 +29,7 @@ function Comment( { review } ) {
         value: newRatingValue
     }
     return (
-        <div className='p-4 bg-white rounded-lg shadow-lg'>
+        <div className='p-4 bg-white rounded-lg shadow-lg my-2'>
             <div className='flex items-center justify-between  pt-2  '>
                 <div className='flex items-center'>
 

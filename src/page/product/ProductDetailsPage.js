@@ -32,13 +32,13 @@ function ProductDetailsPage() {
     return (
         <div className=''>
             <NavOfProduct />
-            <div className='container   flex flex-col gap-5 md:grid-cols-12 md:grid  mt-10 items-center'>
+            <div className='container   flex flex-col gap-5 md:grid-cols-12 md:grid  mt-10 items-stretch'>
                 <div className='col-span-4 p-10 md:p-2 md:w-[90%] bg-white  rounded-3xl shadow-2xl'>
                     { !loading ?
                         <SlideShowProduct images={ images } />
                         :
-                        <div>
-                            <Skeleton variant="rounded" height={ 500 } className='w-[300px] md:w-[90%] m-auto' />
+                        <div className='h-full flex flex-col justify-evenly'>
+                            <Skeleton variant="rounded" height={ 450 } className='w-full md:w-[90%] mx-auto' />
                             <div className='flex gap-2 mt-10 ml-2'>
                                 <Skeleton variant="rounded" height={ 40 } width={ 40 } />
                                 <Skeleton variant="rounded" height={ 40 } width={ 40 } />
@@ -49,7 +49,7 @@ function ProductDetailsPage() {
                         </div>
                     }
                 </div>
-                <div className='col-span-8 mb-10 md:mb-0'>
+                <div className='col-span-8 mb-10 md:mb-0 bg-white rounded-3xl shadow-2xl'>
 
                     <DetailsProduct loading={ loading } id={ item._id } title={ item.title } categoryId={ item.category } brandId={ item.brand } createdAt={ item.createdAt } sold={ item.sold } quantity={ item.quantity } category={ category } description={ item.description } price={ item.price } brand={ brand } colors={ item.availableColors } rateQty={ rateQty } rateAvg={ rateAvg } favProduct={ favProduct } />
 

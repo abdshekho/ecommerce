@@ -8,14 +8,14 @@ import { ToastContainer } from 'react-toastify';
 import Spinner from '../utility/Spinner';
 import ProductCardHook from '../../hook/products/product-card-hook';
 import { Link } from 'react-router-dom';
-import { Skeleton } from '@mui/material';
+import { LinearProgress, Skeleton } from '@mui/material';
 
 function DetailsProduct( { loading, id, title, category, description, price, brand, colors, rateAvg, favProduct, sold, quantity, createdAt, brandId, categoryId, rateQty } ) {
     const [ colorChoose, handelColro, handelAddToCart, loadingAdd ] = AddToCartHook( id, colors );
     const [ handelFav, Fav ] = ProductCardHook( id, favProduct )
     console.log( loading )
     return (
-        <div className='p-6 sm:p-12 bg-white rounded-3xl shadow-2xl'>
+        <div className='p-6 sm:p-12 '>
             <div>
                 <div>
                     { !loading ?
@@ -98,10 +98,10 @@ function DetailsProduct( { loading, id, title, category, description, price, bra
             </div>
             <div className='flex justify-end text-xs md:text-sm text-blue-gray-600  my-4 items-center gap-1'><FaGlobeAmericas /> { createdAt ? createdAt.slice( 0, 10 ) : 0 }</div>
             <div className='flex'>
-                <Button className='flex items-center' onClick={ handelAddToCart }>Add to Cart <FaShoppingCart className='ml-1' />  </Button>
+                <Button disabled={ loadingAdd } className='flex items-center' onClick={ handelAddToCart }>Add to Cart <FaShoppingCart className='ml-1' />  </Button>
                 <Chip value={ price + " $" } className='ml-2 flex items-center bg-gray-100 text-lg text-blue-gray-700' />
-                { loadingAdd ? <Spinner /> : <div></div> }
             </div>
+            { loadingAdd ? <LinearProgress className='mt-3 ' /> : <div></div> }
             <ToastContainer />
         </div >
     )

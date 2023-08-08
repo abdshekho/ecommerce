@@ -16,6 +16,12 @@ html {
 
 }
 
+.inputPhone::-webkit-outer-spin-button,
+.inputPhone::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 @layer components {
     .side-profile-link {
         @apply border-b-[1px] px-2 py-4 hover:bg-[#f4f4f891] text-sm md:text-lg   text-blue-gray-700

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import { forgetPassword, verifyPassword } from '../../redux/actions/authAction';
+import {  verifyPassword } from '../../redux/actions/authAction';
 import { notifyError, notifySuccess } from '../useNotification';
 
 function VerifyPasswordHook() {
@@ -19,6 +19,7 @@ function VerifyPasswordHook() {
     const onSubmit = async () => {
         if ( code === "" ) {
             notifyError( "Enter code" )
+            return
         }
         setLoading( true )
         await dispatch( verifyPassword( {

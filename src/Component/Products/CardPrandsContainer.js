@@ -11,7 +11,7 @@ import { URL } from '../../Api/baseUrlWithoutAxios';
 function CardProductsContainer( { titleOfBar, prodcuts } ) {
     const [ favProduct ] = CardContainerHook()
     // imagePath = `${URL}products/${imageCover}` || "Product Delted"
-
+    
     return (
         <div className='container mt-20 shadow-md bg-[#f2f1f6d1] py-10 rounded-3xl  '>
             <BarOfHomePage title={ titleOfBar } btnTitle={ "More" } pathRoute={ "AllProudct" } />

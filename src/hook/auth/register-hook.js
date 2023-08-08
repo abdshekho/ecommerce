@@ -76,9 +76,12 @@ const RegisterHook = () => {
                     localStorage.setItem( "token", res.data.token )
                     console.log( res )
                     notifySuccess( "Register Complete" )
+                    localStorage.setItem( "token", res.data.token )
+                    localStorage.setItem( "user", JSON.stringify( res.data.data ) )
+                    notifySuccess( "Register Complete" )
                     setTimeout( () => {
-                        navigate( '/login' )
-                    }, 2000 );
+                        window.location.href = "/"
+                    }, 500 );
                 }
 
                 if ( res.data.errors ) {

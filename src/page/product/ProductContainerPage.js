@@ -24,7 +24,7 @@ function ProductContainerPage() {
     if ( pagination && pagination.length !== 0 )
         numberOfPages = pagination.numberOfPages
 
-    const arr = [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+
     // console.clear()
     return (
         <div>
@@ -48,14 +48,16 @@ function ProductContainerPage() {
                         <div className='container mt-20 shadow-md bg-[#f2f1f6d1] py-10 rounded-3xl  '>
                             <BarOfHomePage title={ "All products" } btnTitle={ "More" } />
                             <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8'>
-                                { arr.map( () => {
-                                    return (
 
-                                        <Skeleton variant="rounded" height={ 330 } className=' sm:w-[190px] lg:w-[180px] xl:w-[240px]' />
 
-                                    )
-                                } ) }
-
+                                <Skeleton variant="rounded" height={ 330 } className=' w-[160px] md:w-[230px] lg:w-[180px] xl:w-[200px] 2xl:w-[240px]' />
+                                <Skeleton variant="rounded" height={ 330 } className=' w-[160px] md:w-[230px] lg:w-[180px] xl:w-[200px] 2xl:w-[240px]' />
+                                <Skeleton variant="rounded" height={ 330 } className=' w-[160px] md:w-[230px] lg:w-[180px] xl:w-[200px] 2xl:w-[240px]' />
+                                <Skeleton variant="rounded" height={ 330 } className=' w-[160px] md:w-[230px] lg:w-[180px] xl:w-[200px] 2xl:w-[240px]' />
+                                <Skeleton variant="rounded" height={ 330 } className=' w-[160px] md:w-[230px] lg:w-[180px] xl:w-[200px] 2xl:w-[240px]' />
+                                <Skeleton variant="rounded" height={ 330 } className=' w-[160px] md:w-[230px] lg:w-[180px] xl:w-[200px] 2xl:w-[240px]' />
+                                <Skeleton variant="rounded" height={ 330 } className=' w-[160px] md:w-[230px] lg:w-[180px] xl:w-[200px] 2xl:w-[240px]' />
+                                <Skeleton variant="rounded" height={ 330 } className=' w-[160px] md:w-[230px] lg:w-[180px] xl:w-[200px] 2xl:w-[240px]' />
                             </div>
                         </div>
 

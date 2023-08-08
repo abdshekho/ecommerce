@@ -3,14 +3,18 @@ import { Card, Input, Checkbox, Button, Typography, Spinner } from "@material-ta
 import { Link } from 'react-router-dom';
 import RegisterHook from '../../hook/auth/register-hook';
 import { ToastContainer } from 'react-toastify';
+import { LinearProgress } from '@mui/material';
 
 function RegisterPage() {
     const [ name, email, phone, password, confirmPassword, loading, onChangeName, onChangeEmail,
         onChangePhone, onChangePassword, onChangeConfirmPassword, OnSubmit, press ] = RegisterHook()
     return (
-        <div className='md:container flex justify-center pt-10'>
-
-            <Card color="transparent" shadow={ false } className='bg-white py-20 px-10 w-full md:w-[60%]'>
+        <div className='md:container flex justify-center pt-10 '>
+            { loading ?
+                <div className='w-[100%] absolute z-20 top-[-2px] '>
+                    <LinearProgress />
+                </div> : <div></div> }
+            <Card color="transparent" shadow={ false } className={ `bg-white ${loading ? "opacity-60 " : "opacity-100 "}py-20 px-10 w-full md:w-[60%]` }>
                 <Typography variant="h4" color="blue-gray">
                     Sign Up
                 </Typography>
@@ -21,7 +25,7 @@ function RegisterPage() {
                     <div className="mb-4 flex flex-col gap-6">
                         <Input size="lg" label="UserName" value={ name } onChange={ onChangeName } />
                         <Input size="lg" label="Email" value={ email } onChange={ onChangeEmail } />
-                        <Input size="lg" label="phone" type='number' value={ phone } onChange={ onChangePhone } />
+                        <Input size="lg" label="phone" type='number' value={ phone } onChange={ onChangePhone } className='inputPhone'/>
                         <Input type="password" size="lg" label="Password" value={ password } onChange={ onChangePassword } />
                         <Input type="password" size="lg" label="Confirm password" value={ confirmPassword } onChange={ onChangeConfirmPassword } />
                     </div>
@@ -45,8 +49,7 @@ function RegisterPage() {
                         }
                         containerProps={ { className: "-ml-2.5" } }
                     />
-                    { loading ? <div><Spinner className='w-[40px] h-[40px] m-10' /></div> : <div></div> }
-                    <Button className="mt-6" fullWidth onClick={ OnSubmit } type='submit'>
+                    <Button disabled={ loading } className="mt-6" fullWidth onClick={ OnSubmit } type='submit'>
                         Register
                     </Button>
                     <Typography color="gray" className="mt-4 text-center font-normal">
@@ -60,6 +63,11 @@ function RegisterPage() {
                     </Typography>
 
                 </div>
+            {
+                loading ? ( loading ? <div className='w-[97%]  absolute z-30 bottom-0 left-2 '>
+                    <LinearProgress />
+                </div> : null ) : null
+            }
             </Card>
             <ToastContainer />
         </div>

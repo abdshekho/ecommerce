@@ -43,7 +43,7 @@ export const getAllCategoryToNav = ( limit ) => async ( dispatch ) => {
 export const getAllCategoryPage = ( page ) => async ( dispatch ) => {
 
     try {
-        const res = await useGetData( `api/v1/categories?limit=5&page=${page}` );
+        const res = await useGetData( `api/v1/categories?limit=5&page=${page}&fields=_id,name,image` );
         // console.log(res)
         dispatch( {
             type: GET_ALL_CATEGORY,

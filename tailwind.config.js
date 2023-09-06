@@ -31,9 +31,12 @@ module.exports = withMT({
           card:"#252b43",
           dark:"#1d2029",
         },
+        mainBlue: "#2196f3",
+        mainGray: "#474751",
+        tooltip: "#000000c2",
         facebook: "#1791f0",
         twitter: "#1da1f5",
-        maingreen: "#3fac8e"
+        mainGreen: "#3fac8e"
       }
     },
   },

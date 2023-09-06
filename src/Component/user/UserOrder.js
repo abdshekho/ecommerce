@@ -3,7 +3,6 @@ import UserOrderItem from './UserOrderItem'
 import { Spinner } from '@material-tailwind/react'
 
 function UserOrder( { cartItems } ) {
-    console.log( cartItems )
     return (
         <div >
             { cartItems && cartItems.length !== 0 && cartItems[ 0 ]?.product ?

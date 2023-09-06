@@ -1,5 +1,4 @@
 import ReactPaginate from 'react-paginate';
-import "./style.css"
 import { useEffect } from 'react';
 function Pagination( { pageCount, onPress } ) {
 

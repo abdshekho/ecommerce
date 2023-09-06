@@ -18,7 +18,7 @@ function CartItem( { idCartItem, Category, title, imageCover, Brand, price, colo
             <div className='col-span-3 sm:mr-4'>
                 { imagePath.length > 20 ?
                     <Link to={ `/products/${idProduct}` }>
-                        <Tooltip content={ `More details about ${title}` } className="bg-[#474751]">
+                        <Tooltip content={ `More details about ${title}` } className="bg-mainGray">
                             <img src={ imagePath } alt='asPhoto' className='w-full'></img>
                         </Tooltip>
                     </Link>
@@ -43,8 +43,8 @@ function CartItem( { idCartItem, Category, title, imageCover, Brand, price, colo
                 </div>
             </div>
             <div className='col-span-2 flex sm:flex-col justify-around  items-center md:items-end'>
-                <span onClick={ handleDelete } className='flex items-center cursor-pointer text-white  bg-[#000000c2] p-[7px] rounded-lg'><FaTrashAlt className='mr-1' /><span >Delete</span></span>
-                <span className='font-[800] text-sm md:text-lg text-right sm:text-left'>{ price || 0 } $</span>
+                <span onClick={ handleDelete } className='flex items-center cursor-pointer text-white  bg-tooltip p-[7px] rounded-lg'><FaTrashAlt className='mr-1' /><span >Delete</span></span>
+                <span className='font-[800] paragraph text-right sm:text-left'>{ price || 0 } $</span>
             </div>
             { loadingDelete ? <Spinner className="h-12 w-12" /> : <div></div> }
         </div>

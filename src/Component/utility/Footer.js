@@ -49,9 +49,9 @@ function Footer() {
                     </Tooltip>
                 </div>
                 <div className='flex md:flex-col gap-3 justify-center text-center'>
-                    <a href='https://www.linkedin.com/in/abd-shekho/' className='mx-2 text-gray-600 hover:text-[#2196f3]'>About Us</a>
-                    <a href='https://www.linkedin.com/in/abd-shekho/' className='mx-2 text-gray-600 hover:text-[#2196f3]'>Contact Us</a>
-                    <a href='https://www.linkedin.com/in/abd-shekho/' className='mx-2 text-gray-600 hover:text-[#2196f3]'>Projects</a>
+                    <a href='https://www.linkedin.com/in/abd-shekho/' className='mx-2 text-gray-600 hover:text-mainBlue'>About Us</a>
+                    <a href='https://www.linkedin.com/in/abd-shekho/' className='mx-2 text-gray-600 hover:text-mainBlue'>Contact Us</a>
+                    <a href='https://www.linkedin.com/in/abd-shekho/' className='mx-2 text-gray-600 hover:text-mainBlue'>Projects</a>
                 </div>
             </div>
         </div>

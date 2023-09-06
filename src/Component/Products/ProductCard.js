@@ -20,15 +20,15 @@ function ProductCard( { image, titleOfProdcut, description, price, id, rateAvg, 
         <div className='bg-white  pl-2  md:p-3 rounded-lg shadow-lg overflow-hidden flex flex-col justify-end'>
             <div className='h-full flex items-center my-2'>
                 <Link to={ `/products/${id}` } >
-                    <Tooltip content="More details" className="bg-[#474751]">
+                    <Tooltip content="More details" className="bg-mainGray">
                         <img src={ image } alt='' className=' m-auto hover:opacity-[0.8]' />
                     </Tooltip>
                 </Link>
             </div>
             <div>
                 <div className='flex justify-between pr-1'>
-                    <h1 className='text-sm md:text-lg  font-sans'>{ titleOfProdcut }</h1>
-                    <Tooltip content="Add to wish list" className="bg-[#474751]">
+                    <h1 className='paragraph  font-sans'>{ titleOfProdcut }</h1>
+                    <Tooltip content="Add to wish list" className="bg-mainGray">
                         <IconButton color="red" variant="text" onClick={ handelFav }>
                             <div className='flex items-end cursor-pointer' >
                                 { !Fav ? <FaRegHeart className='' /> : <FaHeart className=' text-red-700' /> }
@@ -42,12 +42,12 @@ function ProductCard( { image, titleOfProdcut, description, price, id, rateAvg, 
             <div>
                 <div className='flex justify-around sm:justify-between items-center mt-2 md:mt-4'>
                     <div>
-                        <span className='font-[800] text-sm md:text-lg text-[#474751]'>{ price } </span>$
+                        <span className='font-[800] paragraph text-mainGray'>{ price } </span>$
                     </div>
                     <div className='flex text-yellow-700 pr-1 text-sm md:text-md items-center'>{ rateAvg ? rateAvg : 4.8 } <FaStar className='ml-1 ' /></div>
-                    <Tooltip content="Add to cart" className="bg-[#474751]">
+                    <Tooltip content="Add to cart" className="bg-mainGray">
                         <IconButton disabled={ loadingAdd } variant="text" onClick={ handelAddToCart }>
-                            <div className='cursor-pointer text-[#474751]'><FaShoppingCart className='w-[25px] h-[25px]' /></div>
+                            <div className='cursor-pointer text-mainGray'><FaShoppingCart className='w-[25px] h-[25px]' /></div>
                         </IconButton>
                     </Tooltip>
                 </div>

@@ -68,10 +68,10 @@ function AdimCouponCard( { id, couponName, couponDate, couponValue, createAt } )
             { true ?
                 <div className='flex justify-end text-sm px-1 py-1 text-blue-gray-700'>
                     <Tooltip content="Delete">
-                        <span className='flex cursor-pointer text-white  bg-[#000000c2] p-[7px] rounded-lg mr-4' onClick={ handleOpen }><FaTrashAlt className='mr-1' /></span>
+                        <span className='flex cursor-pointer text-white  bg-tooltip p-[7px] rounded-lg mr-4' onClick={ handleOpen }><FaTrashAlt className='mr-1' /></span>
                     </Tooltip>
                     <Tooltip content="Edite">
-                        <span className='flex cursor-pointer text-white  bg-[#000000c2] p-[7px] rounded-lg' onClick={ handleOpenEdite }><FaPencilAlt className='mr-1' /></span>
+                        <span className='flex cursor-pointer text-white  bg-tooltip p-[7px] rounded-lg' onClick={ handleOpenEdite }><FaPencilAlt className='mr-1' /></span>
                     </Tooltip>
 
                 </div> : <div></div> }

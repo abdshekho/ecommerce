@@ -11,7 +11,6 @@ function AllBrand() {
 
     useEffect( () => {
         function one() {
-
             dispatch( getAllBrand( 5 ) )
         }
         one()
@@ -21,7 +20,6 @@ function AllBrand() {
         dispatch( getAllBrandPage( page ) )
     }
     const brand = useSelector( state => state.allBrand.brand )
-    // const test = useSelector( state => state.allBrand.brand )
     const loading = useSelector( state => state.allBrand.loading )
 
     let numberOfPages = 0
@@ -31,7 +29,7 @@ function AllBrand() {
     return (
         <div className='container'>
 
-            <h1 className='text-xl md:text-2xl bg-[#474751] text-white p-2 text-center mb-20'style={{boxShadow:"0px 6px 0px 0px #2196f3"}}>All Brands</h1>
+            <h1 className='text-xl md:text-2xl bg-mainGray text-white p-2 text-center mb-20'style={{boxShadow:"0px 6px 0px 0px #2196f3"}}>All Brands</h1>
             <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8'>
                 { loading === false ?
                     brand.data ? brand.data.map( item => {
@@ -40,17 +38,6 @@ function AllBrand() {
                     } ) : <h3>no item yet</h3>
                     : <div><Spinner /></div>
                 }
-                {/* <Brand srce={ one } />
-                <Brand srce={ two } />
-                <Brand srce={ three } />
-                <Brand srce={ one } />
-                <Brand srce={ two } />
-                <Brand srce={ three } />
-                <Brand srce={ one } />
-                <Brand srce={ two } />
-                <Brand srce={ three } />
-                <Brand srce={ one } />
-                <Brand srce={ two } /> */}
             </div>
             { numberOfPages > 1 ? <Pagination pageCount={ numberOfPages } onPress={ getPage } /> : null }
         </div>

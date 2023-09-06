@@ -13,26 +13,26 @@ import { LinearProgress, Skeleton } from '@mui/material';
 function DetailsProduct( { loading, id, title, category, description, price, brand, colors, rateAvg, favProduct, sold, quantity, createdAt, brandId, categoryId, rateQty } ) {
     const [ colorChoose, handelColro, handelAddToCart, loadingAdd ] = AddToCartHook( id, colors );
     const [ handelFav, Fav ] = ProductCardHook( id, favProduct )
-    console.log( loading )
+    
     return (
         <div className='p-6 sm:p-12 '>
             <div>
                 <div>
-                    { !loading ?
+                    { !loading && title && description ?
                         <h2 className='text-md md:text-xl  font-bold mb-2 bg-[#eff0f4] p-2 rounded-lg text-blue-gray-900 text-center'>{ title }</h2>
                         : <Skeleton variant="text" height={ 66 } /> }
                 </div>
                 <span className='flex  items-center  justify-between my-2'>
-                    <div className='flex text-yellow-700 pr-1 text-sm md:text-lg items-baseline'>
+                    <div className='flex text-yellow-700 pr-1 paragraph items-baseline'>
                         <FaStar className='mr-1' /> { rateAvg } </div>
                     <span className='text-xs text-blue-gray-500'>({ rateQty } reviews )</span>
-                    <Tooltip content="Add to wish list" className="bg-[#474751]">
+                    <Tooltip content="Add to wish list" className="bg-mainGray">
                         <IconButton color="red" variant="text" onClick={ handelFav }>
                             <div className='cursor-pointer'> { !Fav ? <FaRegHeart className='' /> : <FaHeart className='text-red-700' /> }</div>
                         </IconButton>
                     </Tooltip>
                 </span>
-                {/* <span className='text-sm md:text-lg  font-sans text-blue-gray-800 hover:text-[#2196f3] mb-10'>
+                {/* <span className='paragraph  font-sans text-blue-gray-800 hover:text-mainBlue mb-10'>
                     <Link to={ `/products/category/${category}/${categoryId}` }>
                         { category || "product may be Deleted already" }
                     </Link>
@@ -41,9 +41,9 @@ function DetailsProduct( { loading, id, title, category, description, price, bra
 
             <div className='my-2 flex'>
                 <span className='text-md md:text-lg  font-bold bg-[#eff0f4] p-2 rounded-lg text-blue-gray-900'>Category: </span>
-                <span className='text-sm md:text-lg  font-sans text-blue-gray-900 hover:text-[#2196f3] ml-5'>
+                <span className='paragraph  font-sans text-blue-gray-900 hover:text-mainBlue ml-5'>
                     <Link to={ `/products/category/${category}/${categoryId}` }>
-                        { !loading ?
+                        { !loading && title && category ?
                             category
                             : <Skeleton width={ 100 } height={ 50 } />
                         }
@@ -52,9 +52,9 @@ function DetailsProduct( { loading, id, title, category, description, price, bra
             </div>
             <div className='my-2 flex'>
                 <span className='text-md md:text-lg  font-bold bg-[#eff0f4] p-2 rounded-lg text-blue-gray-900'>Bradn:</span>
-                <span className='text-sm md:text-lg  font-sans text-blue-gray-900 hover:text-[#2196f3] ml-5'>
+                <span className='paragraph  font-sans text-blue-gray-900 hover:text-mainBlue ml-5'>
                     <Link to={ `/products/brnad/${brand}/${brandId}` }>
-                        { !loading && brand ?
+                        { !loading && title && brand ?
                             brand
                             : <Skeleton width={ 100 } height={ 50 } />
                         }
@@ -81,25 +81,25 @@ function DetailsProduct( { loading, id, title, category, description, price, bra
             <div className='mt-3'>
                 <span className='text-md md:text-lg  font-bold mb-2 bg-[#eff0f4] p-2 rounded-lg text-blue-gray-900 '>Details:</span>
 
-                { !loading ?
-                    <p className='text-sm md:text-lg  font-sans text-blue-gray-600 my-4'>{ description }</p>
+                { !loading && description && title ?
+                    <p className='paragraph  font-sans text-blue-gray-600 my-4'>{ description }</p>
                     :
                     <div>
                         <Skeleton variant="text" height={ 45 } />
                         <Skeleton variant="text" height={ 45 } />
                     </div>
                 }
-                {/* <p className='text-sm md:text-lg  font-sans text-blue-gray-600 my-4'>{ description }</p> */ }
+                {/* <p className='paragraph  font-sans text-blue-gray-600 my-4'>{ description }</p> */ }
             </div>
             <div className='flex justify-between flex-wrap gap-4 text-sm md:text-md my-4  font-bold bg-[#eff0f4] p-2 rounded-lg text-blue-gray-900'>
                 <span>sold: { sold }</span>
                 <span>sold total: { sold && price ? sold * price : 0 }$</span>
                 <span>available quantity: { quantity }</span>
             </div>
-            <div className='flex justify-end text-xs md:text-sm text-blue-gray-600  my-4 items-center gap-1'><FaGlobeAmericas /> { createdAt ? createdAt.slice( 0, 10 ) : 0 }</div>
+            <div className='flex justify-end text-xs md:text-sm text-blue-gray-600  my-4 items-center gap-1'><FaGlobeAmericas /> { createdAt ? createdAt.slice( 0, 10 ) : '2023-12-12' }</div>
             <div className='flex'>
                 <Button disabled={ loadingAdd } className='flex items-center' onClick={ handelAddToCart }>Add to Cart <FaShoppingCart className='ml-1' />  </Button>
-                <Chip value={ price + " $" } className='ml-2 flex items-center bg-gray-100 text-lg text-blue-gray-700' />
+                <Chip value={ price ? price + " $" : "100 $" } className='ml-2 flex items-center bg-gray-100 text-lg text-blue-gray-700' />
             </div>
             { loadingAdd ? <LinearProgress className='mt-3 ' /> : <div></div> }
             <ToastContainer />

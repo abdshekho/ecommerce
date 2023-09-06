@@ -1,0 +1,2 @@
+GET https://syrian-e-commerce.onrender.com/api/v1/categories
+Content-Type: application/json

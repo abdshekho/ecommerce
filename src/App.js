@@ -23,20 +23,20 @@ import UserAllAddressPage from "./page/user/UserAllAddressPage";
 import UserAddNewAddressPage from "./page/user/UserAddNewAddressPage";
 import UserEditAddressPage from "./page/user/UserEditAddressPage";
 import UserProfilePage from "./page/user/UserProfilePage";
-import AdminAllProduct from "./Component/Admin/AdminAllProduct";
 import AdminMangeProducts from "./page/Admin/AdminMangeProducts";
 import AdminEditProductsPage from "./page/Admin/AdminEditProductsPage";
 import ForgetPasswordPage from "./page/Auth/ForgetPasswordPage";
 import ScrolTopWrapper from "./Component/utility/ScrolTopWrapper";
 import AdminAddCouponPage from "./page/Admin/AdminAddCouponPage";
-import ProtectedRouteHook from "./hook/auth/protected-route-hook";
-import ProtectedRoute from "./Component/utility/ProtectedRoute";
 import VerifyPasswordPage from "./page/Auth/VerifyPasswordPage";
 import ResetPasswordPage from "./page/Auth/ResetPasswordPage";
 import ProductByCategory from "./page/product/ProductByCategory";
 import ProudctByBrand from "./page/product/ProudctByBrand";
 import AdmiFavoritPage from "./page/Admin/AdmiFavoritPage";
 import About from "./page/About/About";
+
+import ProtectedRouteHook from "./hook/auth/protected-route-hook";
+import ProtectedRoute from "./Component/utility/ProtectedRoute";
 // import baseUrl from "./Api/baseURL";
 function App() {
 
@@ -50,6 +50,7 @@ function App() {
           <ScrolTopWrapper >
             <Routes >
 
+{/* All */}
               <Route index element={ <HomePage /> } />
               <Route path="/login" element={ <LoginPage /> } />
               <Route path="/register" element={ <RegisterPage /> } />
@@ -57,15 +58,14 @@ function App() {
               <Route path="/AllBrand" element={ <AllBrandPage /> } />
               <Route path="/AllProudct" element={ <ProductContainerPage /> } />
               <Route path="/products/:id" element={ <ProductDetailsPage /> } />
-              <Route path="/Cart" element={ <CartPage /> } />
-              <Route path="/About" element={ <About /> } />
               <Route path="/user/forget-password" element={ <ForgetPasswordPage /> } />
               <Route path="/user/verify-code" element={ <VerifyPasswordPage /> } />
               <Route path="/user/reset-password" element={ <ResetPasswordPage /> } />
               <Route path="/products/category/:title/:id" element={ <ProductByCategory /> } />
               <Route path="/products/brnad/:name/:id" element={ <ProudctByBrand /> } />
+              <Route path="/About" element={ <About /> } />
 
-
+{/* Admin */}
               <Route element={ <ProtectedRoute auth={ isAdmin } /> }>
                 <Route path="/admin/allorders" element={ <AdminAllOrderPage /> } />
                 <Route path="/admin/order/:id" element={ <AdminOrderDetailsPage /> } />
@@ -79,6 +79,7 @@ function App() {
                 <Route path="/admin/favorite" element={ <AdmiFavoritPage /> } />
               </Route>
 
+{/* User */}
               <Route element={ <ProtectedRoute auth={ isUser } /> }>
                 <Route path="/user/allorders" element={ <UserAllOrderPage /> } />
                 <Route path="/user/favorite" element={ <UserFavoriteProductsPage /> } />
@@ -87,6 +88,7 @@ function App() {
                 <Route path="/user/edite-address" element={ <UserEditAddressPage /> } />
                 <Route path="/user/user-profile" element={ <UserProfilePage /> } />
                 <Route path="/order/paymethoud" element={ <CheckOut /> } />
+                <Route path="/Cart" element={ <CartPage /> } />
               </Route>
 
 

@@ -4,7 +4,6 @@ import SidebarSearchHook from '../../hook/products/sidebar-search-hook'
 
 function SideFilter() {
     const [ category, brand, clickCategory, clickBrand, priceFrom, priceTo, From, To ] = SidebarSearchHook()
-
     return (
         <div className='container  flex sm:flex-col justify-between sm:justify-start bg-gray-50 pb-10 h-full rounded-lg'>
             <div className='flex flex-col  mt-4'>

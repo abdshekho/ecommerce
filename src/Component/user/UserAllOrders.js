@@ -39,7 +39,7 @@ function UserAllOrders( { title } ) {
                             <UserOrder cartItems={ item.cartItems } />
 
                             <div className='col-span-2 flex flex-col lg:flex-row justify-between items-center lg:items-end py-4'>
-                                <span className='font-[800] text-sm md:text-lg '>{ item.totalOrderPrice } $</span>
+                                <span className='font-[800] paragraph '>{ item.totalOrderPrice } $</span>
                                 <span className='bg-white'>Deliver state: <span className='text-blue-gray-600'>{ item.isDelivered ? "Order complete" : "Underway" }</span> </span>
                                 <span className='bg-white'>Payment method: <span className='text-blue-gray-600'>{ item.paymentMethodType }</span> </span>
                                 <span className='bg-white'>payment state: <span className='text-blue-gray-600'>{ item.isPaid ? "done" : "not done" }</span> </span>

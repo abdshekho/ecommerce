@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import CategoryCard from './CategoryCard';
 import BarOfHomePage from '../utility/BarOfHomePage';
 
@@ -8,19 +8,20 @@ import { Skeleton } from '@mui/material';
 
 function Category() {
     const dispatch = useDispatch();
-
-    useEffect( () => {
-        dispatch( getAllCategoryPage( 1 ) )
-    }, [] )
-
     const category = useSelector( state => state.allCategory.category )
     const loading = useSelector( state => state.allCategory.loading )
     const arr = [ 1, 2, 3, 4, 5 ]
+    useEffect( () => {
+        if ( category?.length === 0 || !category ) {
+            dispatch( getAllCategoryPage( 1 ) )
+        }
+    }, [] )
+
+
     return (
         <div className='container mt-20 bg-[#f2f1f6d1] py-10 rounded-3xl  shadow-md'>
             <BarOfHomePage title={ "Categoriesss" } btnTitle={ "More" } pathRoute={ "AllCategory" } />
 
-            {/* <div className='grid items-baseline grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8'> */ }
             <div className='grid items-stretch grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8'>
 
                 { !loading && category && category.data ?

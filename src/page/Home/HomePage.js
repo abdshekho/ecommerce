@@ -8,16 +8,16 @@ import CategoryContainer from '../../Component/Category/CategoryContainer';
 import ViewHomeProductsHook from '../../hook/products/view-home-products-hook';
 
 function HomePage() {
-    const [items] = ViewHomeProductsHook();
+    const [ items ] = ViewHomeProductsHook();
     return (
         <div>
             <Slideshow />
             <CategoryContainer />
-            <CardProductsContainer titleOfBar={"New products"} btnTitle={ "More" } prodcuts={items}/>
+            <CardProductsContainer titleOfBar={ "New products" } btnTitle={ "More" } prodcuts={ items } />
             <Brands />
             <Ads />
-            <CardProductsContainer titleOfBar={"wish list"} btnTitle={ "More" } prodcuts={items}/>
-            {/* <NewProducts /> */}
+            <CardProductsContainer titleOfBar={ "wish list" } btnTitle={ "More" } prodcuts={ items } />
+            {/* <NewProducts /> */ }
         </div>
     )
 }

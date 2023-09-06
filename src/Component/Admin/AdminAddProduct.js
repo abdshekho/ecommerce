@@ -149,7 +149,6 @@ function AdminAddProduct() {
     //onSend Date
     useEffect( () => {
         if ( !loading ) {
-            console.log( products )
             setTimeout( () => setLoading( true ), 1500 )
             if ( products.status === 201 ) {
                 notifySuccess( "Added successfully ..." )

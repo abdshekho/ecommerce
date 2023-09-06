@@ -37,7 +37,6 @@ const NavBarLogin = () => {
     }, [] )
     const goToSearch = () => {
         onChangeSearch( searchValue )
-        console.log( searchValue )
     }
     const SignOUt = () => {
         localStorage.removeItem( 'user' )
@@ -172,7 +171,7 @@ const NavBarLogin = () => {
                                 value={ searchValue }
                                 onChange={ ( e ) => setSearchValue( e.target.value ) }
                             />
-                            <Tooltip content="Search" className="bg-[#474751]">
+                            <Tooltip content="Search" className="bg-mainGray">
                                 <Button onClick={ goToSearch }  size="sm" className="!absolute right-1 top-[6px] rounded flex "><FaSearch /></Button>
                             </Tooltip>
                         </div>

@@ -8,7 +8,7 @@ function About() {
     return (
         <div>
 
-            <h1 className='text-xl md:text-2xl bg-[#474751] text-white p-2 text-center mb-20' style={ { boxShadow: "0px 6px 0px 0px #2196f3" } }>About us</h1>
+            <h1 className='text-xl md:text-2xl bg-mainGray text-white p-2 text-center mb-20' style={ { boxShadow: "0px 6px 0px 0px #2196f3" } }>About us</h1>
 
             <div className='container my-10'>
                 <CardAbout image={ Av } />

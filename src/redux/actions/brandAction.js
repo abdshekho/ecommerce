@@ -7,7 +7,7 @@ import { useInsertDataWithImage } from "../../hooks/useInsertData";
 export const getAllBrand = ( limit ) => async ( dispatch ) => {
 
     try {
-        const res = await useGetData( `api/v1/brands?limit=${limit}` );
+        const res = await useGetData( `api/v1/brands?limit=${limit}&fields=_id,name,image` );
         // console.log(res)
         dispatch( {
             type: GET_ALL_BRAND,

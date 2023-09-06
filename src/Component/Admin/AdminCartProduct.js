@@ -22,9 +22,9 @@ function AdminCartProduct( { id, title, image, description, price, Rating } ) {
                     Open Dialog
                 </Button> */}
 
-                <span onClick={ handleOpen } className='flex cursor-pointer text-white  bg-[#000000c2] p-[7px] rounded-lg'><FaTrashAlt className='mr-1' /><span className=' hidden sm:block'>Delete</span></span>
+                <span onClick={ handleOpen } className='flex cursor-pointer text-white  bg-tooltip p-[7px] rounded-lg'><FaTrashAlt className='mr-1' /><span className=' hidden sm:block'>Delete</span></span>
                 <Link to={ `/admin/editproducts/${id}` } >
-                    <span className='flex cursor-pointer text-white  bg-[#000000c2] p-[7px] rounded-lg'><FaPencilAlt className='mr-1' /><span className=' hidden sm:block'>Edit</span></span>
+                    <span className='flex cursor-pointer text-white  bg-tooltip p-[7px] rounded-lg'><FaPencilAlt className='mr-1' /><span className=' hidden sm:block'>Edit</span></span>
                 </Link>
 
                 <Dialog open={ open } handler={ handleOpen } className='w-full max-w-[90%] md:max-w-[40%]'>
@@ -49,14 +49,14 @@ function AdminCartProduct( { id, title, image, description, price, Rating } ) {
             <div className='flex flex-col justify-between h-full'>
                 <div className='h-full flex items-center'>
                     <Link to={ `/products/${id}` } >
-                        <Tooltip content="More details" className="bg-[#474751]" placement="bottom-start">
+                        <Tooltip content="More details" className="bg-mainGray" placement="bottom-start">
                             <img src={ image } alt='' className=' m-auto' />
                         </Tooltip>
                     </Link>
                 </div>
                 <div>
                     <div className='flex justify-between pr-1'>
-                        <h1 className='text-sm md:text-lg  font-sans'>{ title }</h1>
+                        <h1 className='paragraph  font-sans'>{ title }</h1>
                         <div className='flex items-end'>
                             <FaRegHeart className='mb-2' />
                         </div>
@@ -66,9 +66,9 @@ function AdminCartProduct( { id, title, image, description, price, Rating } ) {
             </div>
             <div className='flex justify-between mt-2 md:mt-4'>
                 <div>
-                    <span className='font-[800] text-sm md:text-lg'>{ price } </span>$
+                    <span className='font-[800] paragraph'>{ price } </span>$
                 </div>
-                <div className='flex text-yellow-700 pr-1 text-sm md:text-lg items-center'>{ Rating } <FaStar className='ml-1 ' /></div>
+                <div className='flex text-yellow-700 pr-1 paragraph items-center'>{ Rating } <FaStar className='ml-1 ' /></div>
             </div>
         </div>
     )

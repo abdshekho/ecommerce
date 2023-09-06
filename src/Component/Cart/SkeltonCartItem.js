@@ -29,8 +29,8 @@ function SkeltonCartItem() {
                 </div>
             </div>
             <div className='col-span-2 flex sm:flex-col justify-around  items-center md:items-end'>
-                <span className='flex items-center cursor-pointer text-white  bg-[#000000c2] p-[7px] rounded-lg'><FaTrashAlt className='mr-1' /><span >Delete</span></span>
-                <span className='font-[800] text-sm md:text-lg text-right sm:text-left'>{ 99 } $</span>
+                <span className='flex items-center cursor-pointer text-white  bg-tooltip p-[7px] rounded-lg'><FaTrashAlt className='mr-1' /><span >Delete</span></span>
+                <span className='font-[800] paragraph text-right sm:text-left'>{ 99 } $</span>
             </div>
         </div>
     )

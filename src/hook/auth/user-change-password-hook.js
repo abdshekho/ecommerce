@@ -14,7 +14,6 @@ function UserChangePassowordHook() {
 
 
     const resChangePassword = useSelector( state => state.authReducer.userChangePassword )
-    console.log( "resChangePassword", resChangePassword )
     const handelSubmite = async () => {
         if ( currentPassword === "" || password === "" || passwordConfirm === "" || password !== passwordConfirm ) {
             notifyError( "invalid value" )

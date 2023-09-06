@@ -19,7 +19,6 @@ const RegisterHook = () => {
 
     const onChangeName = ( e ) => {
         setName( e.target.value )
-        console.log( e.target.value )
     }
     const onChangeEmail = ( e ) => {
         setEmail( e.target.value )

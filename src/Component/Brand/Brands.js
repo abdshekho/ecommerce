@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Brand from './Brand';
 import BarOfHomePage from '../utility/BarOfHomePage';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,15 +9,17 @@ import { useParams } from 'react-router-dom';
 // import two from "../../images/brand2.png"
 // import three from "../../images/brand3.png"
 function Brands() {
-    
+
     const dispatch = useDispatch();
-    useEffect( () => {
-        dispatch( getAllBrand() )
-    }, [] )
     //get last brand state from redux
     const brand = useSelector( state => state.allBrand.brand )
     //get last loading state from redux
     const loading = useSelector( state => state.allBrand.loading )
+    useEffect( () => {
+        if ( brand?.length === 0 || !brand ) {
+            dispatch( getAllBrand(5) )
+        }
+    }, [] )
     return (
 
         <div className='container mt-20 bg-[#f2f1f6d1] py-10 rounded-3xl  shadow-md'>

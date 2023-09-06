@@ -40,7 +40,7 @@ function AllCategoryPage() {
 
     return (
         <div className="container ">
-            <h1 className='text-xl md:text-2xl bg-[#474751] text-white p-2 text-center mb-20' style={ { boxShadow: "0px 6px 0px 0px #2196f3" } }>All categories</h1>
+            <h1 className='text-xl md:text-2xl bg-mainGray text-white p-2 text-center mb-20' style={ { boxShadow: "0px 6px 0px 0px #2196f3" } }>All categories</h1>
             <div className=" grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8">
                 { !loadingCurrnet ?
                     category && category.data ? category.data.map( item => {

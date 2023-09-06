@@ -8,7 +8,6 @@ function ProductCardHook( id, favProduct ) {
     const [ Fav, setFav ] = useState( false )
     const dispatch = useDispatch();
     let isFav = favProduct.some( fitem => fitem === id )
-
     const handelFav = () => {
         setFav( !Fav )
         if ( !Fav && localStorage.getItem( "token" ) != null ) {
@@ -30,6 +29,7 @@ function ProductCardHook( id, favProduct ) {
             setFav( false )
         }
     }, [ isFav ] )
+
 
 
     const resAdd = useSelector( state => state.addToWishListReducer.addWishList )

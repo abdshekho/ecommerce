@@ -15,8 +15,8 @@ function ProductDetailsPage() {
     const [ item, category, brand, produtLike, loading ] = ViewProductDetailsHook( id );
     const [ favProduct ] = CardContainerHook()
 
-
-
+    
+    
     let images = []
     let prodcutsLike = []
     if ( item && category && produtLike && brand ) {

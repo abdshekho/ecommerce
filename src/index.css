@@ -7,13 +7,10 @@
     html {
         font-family: 'Almarai', sans-serif;
     }
-
-
 }
 
 html {
     background-color: #afb4bd4f;
-
 }
 
 .inputPhone::-webkit-outer-spin-button,
@@ -23,12 +20,34 @@ html {
 }
 
 @layer components {
+    .paragraph{
+        @apply text-sm md:text-lg
+    }
     .side-profile-link {
         @apply border-b-[1px] px-2 py-4 hover:bg-[#f4f4f891] text-sm md:text-lg   text-blue-gray-700
     }
     .side-profile-link-active {
-        @apply border-b-[1px] px-2 py-4 bg-[#424242] text-[#2196f3] text-sm md:text-lg hover:bg-[#424242] 
+        @apply border-b-[1px] px-2 py-4 bg-[#424242] text-mainBlue text-sm md:text-lg hover:bg-[#424242] 
     }
 
 
+}
+
+/* Pagination */
+.page-link {
+    background-color: #ebecf0;
+    padding: 12px;
+    color: #272727;
+    border-radius: 10px;
+    user-select: none;
+}
+
+.page-link:not(.activePageinate):hover {
+    background-color: #b4b3be;
+    color: white;
+}
+
+.activePageinate {
+    background-color: #2196f3;
+    color: white;
 }

@@ -19,7 +19,7 @@ const categoryRducer = ( state = initail, actoin ) => {
             }
         case GET_ALL_CATEGORY_ToNav:
             return {
-                state,
+                ...state,
                 categoryToNav: actoin.payload,
                 loading: false
             }

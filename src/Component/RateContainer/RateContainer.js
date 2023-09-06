@@ -32,7 +32,7 @@ function RateContainer( { rateQty, rateAvg } ) {
         <div className='mt-10 pb-10'>
             <div className='flex items-center'>
                 <h1 className='text-md md:text-xl  font-bold mb-2 mr-2'> Rating: </h1>
-                <span className='flex text-yellow-700 pr-1 text-sm md:text-lg '> <FaStar className='pt-1' /> { rateAvg }</span> <span className='text-xs text-blue-gray-500 pl-1'>({ rateQty } reviews)</span>
+                <span className='flex text-yellow-700 pr-1 paragraph '> <FaStar className='pt-1' /> { rateAvg }</span> <span className='text-xs text-blue-gray-500 pl-1'>({ rateQty } reviews)</span>
             </div>
             <div className="flex items-center">
                 <span className="font-bold text-blue-900 ">{ user ? user.name : "" }</span>

@@ -17,7 +17,7 @@ function NavOfProduct() {
         as: "li",
         variant: "small",
         color: "blue-gray",
-        className: "p-1 font-normal flex items-center  hover:text-[#2196f3]"
+        className: "p-1 font-normal flex items-center  hover:text-mainBlue"
     }
 
 
@@ -52,7 +52,7 @@ function NavOfProduct() {
                 : <div><Spinner /></div>
             }
             <Link to="/AllCategory">
-                <Typography { ...propsOfLink }><span href="/" className="flex items-center  hover:text-[#2196f3]">More</span></Typography>
+                <Typography { ...propsOfLink }><span href="/" className="flex items-center  hover:text-mainBlue">More</span></Typography>
             </Link>
         </ul>
     );

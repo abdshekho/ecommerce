@@ -7,13 +7,11 @@ function NavSearchHook( searchValue ) {
     const location = useLocation();
     const navigate = useNavigate();
 
-    console.log( searchValue )
     const [ searchWord, setSearch ] = useState( "" );
     let word = "";
     if ( localStorage.getItem( "searchWord" ) != null )
         word = localStorage.getItem( "searchWord" )
     const onChangeSearch = ( e ) => {
-        console.log( searchValue )
 
         localStorage.setItem( "searchWord", searchValue)
         setSearch( searchValue)

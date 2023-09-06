@@ -5,9 +5,7 @@ import { getAllProducts } from "../../redux/actions/productsAtion";
 function ViewHomeProductsHook() {
 
     const dispatch = useDispatch();
-    useEffect( () => {
-        dispatch( getAllProducts( 4 ) )
-    }, [] )
+
 
     const allProducts = useSelector( state => state.allproduts.allproducts )
     let items = [];
@@ -18,8 +16,12 @@ function ViewHomeProductsHook() {
         } else
             items = []
     }
-    console.log( items )
+    useEffect( () => {
+        if ( items?.length === 0 || !items )
+            dispatch( getAllProducts( 4 ) )
+    }, [] )
     return [ items ]
+
 
 
 } export default ViewHomeProductsHook

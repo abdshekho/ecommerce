@@ -118,7 +118,7 @@ function CheckOut() {
             <div className='container text-md md:text-xl  font-bold mb-2'>
 
                 <h1 className='text-blue-gray-500 mt-10 '>Choose way that will pay</h1>
-                <div className=' flex flex-col  bg-gray-100 p-10 my-10 text-sm md:text-lg  font-sans text-blue-gray-800 rounded-lg sm:rounded-2xl'>
+                <div className=' flex flex-col  bg-gray-100 p-10 my-10 paragraph  font-sans text-blue-gray-800 rounded-lg sm:rounded-2xl'>
 
                     <Radio id="card" value="card" name="type" label="Pay by credit card" onChange={ handelCheck } />
                     <Radio id="cash" value="cash" name="type" label="Pay when delivery" onChange={ handelCheck } />

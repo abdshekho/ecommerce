@@ -28,7 +28,7 @@ export const createProduct = ( fromData ) => async ( dispatch ) => {
 export const getAllProducts = ( limit ) => async ( dispatch ) => {
 
     try {
-        const res = await useGetData( `api/v1/products?limit=${limit}` );
+        const res = await useGetData( `api/v1/products?limit=${limit}&fields=_id,title,description,price,imageCover,ratingsAverage` );
         // console.log(res)
         dispatch( {
             type: GET_ALL_PRODUCTS,

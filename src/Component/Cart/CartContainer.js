@@ -16,12 +16,10 @@ function CartContainer() {
     // const [ totalCartPrice, setTotalPrice ] = useState( "" )
     const resGetCart = useSelector( state => state.cartReducer.getAllUserCart )
     useEffect( () => {
-
         if ( resGetCart && resGetCart.data && resGetCart.data.products ) {
             setCarItem( resGetCart.data.products )
         }
     }, [ resGetCart ] )
-
     const dispatch = useDispatch();
 
     const handelDelete = async () => {

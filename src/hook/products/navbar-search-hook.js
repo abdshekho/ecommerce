@@ -25,8 +25,8 @@ function NavSearchHook( searchValue ) {
 
         setSearch( word )
 
-        if ( searchWord != "" && location.pathname !== "/AllProudct" ) {
-            navigate( "/AllProudct" )
+        if ( searchWord != "" && location.pathname !== "/Proudcts" ) {
+            navigate( "/Proudcts" )
         }
         
             getProduc( word )

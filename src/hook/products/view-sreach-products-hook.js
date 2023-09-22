@@ -77,7 +77,7 @@ function ViewSreachProductsHook() {
         } else {
             sortType = ""
         }
-        if ( sortType === "Without sort" ) {
+        if ( sortType === "New" ) {
             sort = ""
         }
         if ( sortType === "Best seller" ) {

@@ -7,7 +7,6 @@ function CardContainerHook() {
     const [ loading, setLoading ] = useState( true )
     const [ favProduct, setFavProduct ] = useState( [] )
     const res = useSelector( state => state.addToWishListReducer.allWishList )
-    console.log( res )
     let user = "";
     if ( localStorage.getItem( "user" ) )
         user = JSON.parse( localStorage.getItem( "user" ) )

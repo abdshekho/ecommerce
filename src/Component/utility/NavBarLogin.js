@@ -1,7 +1,7 @@
 
 import logo from "../../images/logo.png"
 import { Navbar, IconButton, Button, Input, Avatar, Menu, MenuHandler, MenuList, MenuItem, Badge, Tooltip } from "@material-tailwind/react";
-import { FaAddressCard, FaBezierCurve, FaBriefcase, FaCogs, FaHeart, FaListOl, FaMoneyCheckAlt, FaPowerOff, FaRegHeart, FaRegObjectUngroup, FaSearch, FaShoppingCart, FaTh, FaUserAlt } from "react-icons/fa";
+import { FaAddressCard, FaBezierCurve, FaBriefcase, FaCogs, FaHeart, FaListOl, FaMoneyCheckAlt, FaPowerOff, FaRegHeart, FaRegMoon, FaRegObjectUngroup, FaSearch, FaShoppingCart, FaSun, FaTh, FaUserAlt } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NavSearchHook from "../../hook/products/navbar-search-hook";
@@ -17,8 +17,8 @@ const NavBarLogin = () => {
     const [ open, setOpen ] = useState( false );
 
     useEffect( () => {
-        localStorage.setItem( "searchWord",searchValue ) 
-    }, [searchValue] )
+        localStorage.setItem( "searchWord", searchValue )
+    }, [ searchValue ] )
     let user = "";
     if ( localStorage.getItem( "user" ) )
         user = JSON.parse( localStorage.getItem( "user" ) )
@@ -48,7 +48,7 @@ const NavBarLogin = () => {
 
     const [ itemNum ] = GetAllUserCart();
     const resGetCart = useSelector( state => state.cartReducer.getAllUserCart )
-
+    const [ dark, setDark ] = useState( false );
 
 
     return (
@@ -56,7 +56,9 @@ const NavBarLogin = () => {
             <Navbar className="mx-auto max-w-full px-4 py-3 rounded-md bg-transparent border-none">
                 <div className="container flex flex-wrap items-center justify-between gap-y-4 text-blue-gray-900 ">
                     <Link to={ "/" }><Avatar src={ logo } alt="avatar" size="md" variant="rounded" className="bg-gray-800" /></Link>
+
                     <div className="ml-auto flex gap-1 md:mr-4">
+
                         <Link to={ "/Cart" } alt="" className="flex items-center  ">
                             <Badge className="lowercase" content={ resGetCart && resGetCart.numOfCartItems ? resGetCart.numOfCartItems : 0 } color="green"  >
                                 <IconButton variant="text" className=" text-blue-gray-800 lowercase">
@@ -172,9 +174,13 @@ const NavBarLogin = () => {
                                 onChange={ ( e ) => setSearchValue( e.target.value ) }
                             />
                             <Tooltip content="Search" className="bg-mainGray">
-                                <Button onClick={ goToSearch }  size="sm" className="!absolute right-1 top-[6px] rounded flex "><FaSearch /></Button>
+                                <Button onClick={ goToSearch } size="sm" className="!absolute right-1 top-[6px] rounded flex "><FaSearch /></Button>
                             </Tooltip>
+
                         </div>
+                        <IconButton variant="text" className=" text-blue-gray-800 lowercase border border-[#b0bec5]" onClick={ () => setDark( !dark ) }>
+                            { dark ? <FaSun className="h-4 w-4 text-white" /> : <FaRegMoon className="h-4 w-4  " /> }
+                        </IconButton>
                     </div>
                 </div>
             </Navbar >

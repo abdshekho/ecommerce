@@ -46,7 +46,7 @@ function UserFavoriteProductsPage() {
                         : <div className='m-20'><Spinner className='w-[50px] h-[50px]' /></div>
                     }
                     <div className='flex justify-center my-10 items-center'>
-                        <Link to={ "/AllProudct" }>
+                        <Link to={ "/Proudcts" }>
                             <Button>Products browse</Button>
                         </Link>
                     </div>

@@ -14,7 +14,7 @@ function UserAllOrderPage() {
             <div className='col-start-4 md:col-start-3 col-end-13 pt-10 '>
                 <UserAllOrders title={ "All your orders" } />
                 <div className='flex justify-center my-10 items-center'>
-                    <Link to={ "/AllProudct" }>
+                    <Link to={ "/Proudcts" }>
                         <Button>Products browse</Button>
                     </Link>
                 </div>

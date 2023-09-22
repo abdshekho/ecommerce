@@ -20,7 +20,7 @@ function Category() {
 
     return (
         <div className='container mt-20 bg-[#f2f1f6d1] py-10 rounded-3xl  shadow-md'>
-            <BarOfHomePage title={ "Categoriesss" } btnTitle={ "More" } pathRoute={ "AllCategory" } />
+            <BarOfHomePage title={ "Categories" } btnTitle={ "More categories" } pathRoute={ "categories" } />
 
             <div className='grid items-stretch grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8'>
 
@@ -34,7 +34,7 @@ function Category() {
                     ) : null
                     : arr.map( () => {
                         return (
-                            <div>
+                            <div key={Math.random()}>
                                 <Skeleton variant="rounded" height={ 160 } style={ { maxWidth: "220px" } } />
                                 <Skeleton variant="text" height={ 50 } style={ { maxWidth: "220px", marginTop: "10px" } } />
                             </div>

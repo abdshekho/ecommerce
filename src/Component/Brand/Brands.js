@@ -24,7 +24,7 @@ function Brands() {
 
         <div className='container mt-20 bg-[#f2f1f6d1] py-10 rounded-3xl  shadow-md'>
 
-            <BarOfHomePage title={ "Brands" } btnTitle={ "More" } pathRoute={ "AllBrand" } />
+            <BarOfHomePage title={ "Brands" } btnTitle={ "More brands" } pathRoute={ "Brands" } />
             <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8'>
                 { loading === false ?
                     brand && brand.data ? (

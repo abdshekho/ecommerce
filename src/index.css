@@ -11,6 +11,7 @@
 
 html {
     background-color: #afb4bd4f;
+    scroll-behavior: smooth;
 }
 
 .inputPhone::-webkit-outer-spin-button,
@@ -23,9 +24,11 @@ html {
     .paragraph{
         @apply text-sm md:text-lg
     }
+
     .side-profile-link {
         @apply border-b-[1px] px-2 py-4 hover:bg-[#f4f4f891] text-sm md:text-lg   text-blue-gray-700
     }
+    
     .side-profile-link-active {
         @apply border-b-[1px] px-2 py-4 bg-[#424242] text-mainBlue text-sm md:text-lg hover:bg-[#424242] 
     }

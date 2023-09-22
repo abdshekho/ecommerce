@@ -51,7 +51,7 @@ function NavOfProduct() {
                 } ) : <h3>no item yet</h3>
                 : <div><Spinner /></div>
             }
-            <Link to="/AllCategory">
+            <Link to="/categories">
                 <Typography { ...propsOfLink }><span href="/" className="flex items-center  hover:text-mainBlue">More</span></Typography>
             </Link>
         </ul>

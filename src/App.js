@@ -37,6 +37,7 @@ import About from "./page/About/About";
 
 import ProtectedRouteHook from "./hook/auth/protected-route-hook";
 import ProtectedRoute from "./Component/utility/ProtectedRoute";
+import NotFoundPage from "./page/404/notFoundPage";
 // import baseUrl from "./Api/baseURL";
 function App() {
 
@@ -54,9 +55,9 @@ function App() {
               <Route index element={ <HomePage /> } />
               <Route path="/login" element={ <LoginPage /> } />
               <Route path="/register" element={ <RegisterPage /> } />
-              <Route path="/AllCategory" element={ <AllCategoryPage /> } />
-              <Route path="/AllBrand" element={ <AllBrandPage /> } />
-              <Route path="/AllProudct" element={ <ProductContainerPage /> } />
+              <Route path="/categories" element={ <AllCategoryPage /> } />
+              <Route path="/Brands" element={ <AllBrandPage /> } />
+              <Route path="/Proudcts" element={ <ProductContainerPage /> } />
               <Route path="/products/:id" element={ <ProductDetailsPage /> } />
               <Route path="/user/forget-password" element={ <ForgetPasswordPage /> } />
               <Route path="/user/verify-code" element={ <VerifyPasswordPage /> } />
@@ -64,6 +65,7 @@ function App() {
               <Route path="/products/category/:title/:id" element={ <ProductByCategory /> } />
               <Route path="/products/brnad/:name/:id" element={ <ProudctByBrand /> } />
               <Route path="/About" element={ <About /> } />
+              <Route path="*" element={ <NotFoundPage /> } />
 
 {/* Admin */}
               <Route element={ <ProtectedRoute auth={ isAdmin } /> }>

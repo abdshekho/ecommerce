@@ -1,5 +1,5 @@
 import React from 'react'
-import laptops from "../../images/laptops.png"
+import laptops from "../../images/laptops.webp"
 
 function Ads() {
     const backgroundBar = "linear-gradient(90deg, rgba(157,150,151,1) 0%, rgba(107,102,107,1) 30%, rgba(107,102,107,1) 45%, rgba(45,45,45,1) 100%)"
